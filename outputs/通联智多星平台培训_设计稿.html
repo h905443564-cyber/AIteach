@@ -149,10 +149,9 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
 .tip-warn{background:var(--accent-l);border-left-color:var(--accent);color:#9A3412}
 
 /* Two-col */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:27px;flex:1}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;min-height:0}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;flex:1;min-height:0}
 .four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:21px;flex:1;min-height:0}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;min-height:0}
 
 /* Whitespace-optimization utilities */
 .stretch-card{display:flex;flex-direction:column}
@@ -354,15 +353,7 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
 .access-row .aname{padding:10px 15px;font-weight:600;color:var(--ink);background:var(--bg)}
 .access-row .apath{padding:10px 15px;color:var(--ink2)}
 
-/* Market scene 2-col */
-.mkt-card{
-  padding:33px;border-radius:var(--radius);background:var(--card);
-  border:1px solid var(--border);box-shadow:var(--shadow);
-  border-top:2px solid var(--brand);
-  display:flex;flex-direction:column;gap:15px;
-}
-.mkt-card h3{font-size:24px;font-weight:700;color:var(--ink)}
-.mkt-card .desc{font-size:16px;color:var(--ink2);line-height:1.7}
+/* Market scene 2-col — unused, kept for reference */
 
 /* Scene card header (num + title row) */
 .scene-card-header{display:flex;align-items:center;gap:10px}
@@ -703,11 +694,10 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
       <div class="divider-chip">智慧经营</div>
       <div class="divider-chip">研发智擎</div>
     </div>
-  </div>
+  <div class="page-footer"><span>通联智多星平台交流</span><span>5 / 20</span></div>
 </div>
 
 <!-- ============================================================
-     SLIDE 4 — THREE CORE AGENTS
      ============================================================ -->
 <div class="slide" data-index="7">
   <div class="blob blob-orange" style="width:270px;height:270px;top:-60px;left:40%"></div>
@@ -1306,11 +1296,12 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
       <span style="color:rgba(255,255,255,.6);font-size:18px;letter-spacing:2px">PART 03</span>
     </div>
     <h2 style="font-size:60px;font-weight:800;color:#fff;margin-bottom:12px">实战演示</h2>
-    <p style="font-size:22px;color:rgba(255,255,255,.7);margin-bottom:33px">多端上线 · 运营场景 · 市场场景</p>
+    <p style="font-size:22px;color:rgba(255,255,255,.7);margin-bottom:33px">多端上线 · 运营场景 · 市场场景 · QQ 群机器人</p>
     <div class="divider-chips">
       <div class="divider-chip">多端上线</div>
       <div class="divider-chip">运营场景</div>
       <div class="divider-chip">市场场景</div>
+      <div class="divider-chip">QQ 群机器人</div>
     </div>
     </div>
   </div>
@@ -1365,7 +1356,6 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
     <div class="tip" style="margin-top:8px">&#x1f4a1; 点击任意截图可放大查看完整界面。</div>
   </div>
   <div class="page-footer"><span>通联智多星平台交流</span><span>14 / 20</span></div>
-
 </div>
 <div class="slide" data-index="17">
   <div class="blob blob-blue" style="width:200px;height:200px;top:-40px;right:25%"></div>
@@ -1592,7 +1582,10 @@ render();
 const cardLabels = {
   'pc_login_screenshot.png': 'PC 网页端',
   'haolaoban_app_screenshot.png': '好老板 APP',
-  'qiyeweixin_path.png': '企业微信'
+  'qiyeweixin_path.png': '企业微信',
+  'kb_create_group.png': '创建知识分组',
+  'kb_upload_file.png': '上传知识文件',
+  'kb_url_grab.png': 'URL 抓取知识'
 };
 
 document.querySelectorAll('.screenshot-card').forEach(card => {
