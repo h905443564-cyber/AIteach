@@ -1392,28 +1392,28 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
     <!-- 底部长条：场景 3-6 -->
     <div style="margin-top:12px;display:flex;gap:10px">
       <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
-        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0">3</div>
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-l))">3</div>
         <div style="min-width:0;flex:1">
           <div style="font-size:13px;font-weight:700;color:var(--ink)">商户全景</div>
           <div style="font-size:11px;color:var(--ink2);line-height:1.4">基本信息、签约产品、结算账户一次查清</div>
         </div>
       </div>
       <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
-        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
         <div style="min-width:0;flex:1">
           <div style="font-size:13px;font-weight:700;color:var(--ink)">问题诊断</div>
           <div style="font-size:11px;color:var(--ink2);line-height:1.4">输入流水号，AI 定位交易失败原因</div>
         </div>
       </div>
       <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
-        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#FF9F6B)">5</div>
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),#FF9F6B)">5</div>
         <div style="min-width:0;flex:1">
           <div style="font-size:13px;font-weight:700;color:var(--ink)">产品学习</div>
           <div style="font-size:11px;color:var(--ink2);line-height:1.4">拆分提问：概念 → 流程 → 对比</div>
         </div>
       </div>
       <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
-        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#FF9F6B)">6</div>
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--green),#34D399)">6</div>
         <div style="min-width:0;flex:1">
           <div style="font-size:13px;font-weight:700;color:var(--ink)">知识库</div>
           <div style="font-size:11px;color:var(--ink2);line-height:1.4">上传文档 → 团队共享 → 持续维护</div>
@@ -1450,32 +1450,26 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
       </div>
     </div>
     <!-- 底部长条：场景 3-5 -->
-    <div style="margin-top:14px;padding:12px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;gap:0">
-      <div style="font-size:13px;font-weight:700;color:var(--mut);margin-right:16px;white-space:nowrap">更多场景 &rarr;</div>
-      <div style="flex:1;display:flex;gap:0">
-        <div style="flex:1;text-align:center;padding:0 12px;border-right:1px solid var(--border)">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px;background:linear-gradient(135deg,var(--brand),var(--brand-l))">3</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">经营分析</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">输入商户号，AI 分析经营情况并给建议</div>
-          <a href="#对话链接-市场-3" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+    <div style="margin-top:12px;display:flex;gap:10px">
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-l))">3</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">经营分析</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">输入商户号，AI 分析经营情况并给建议</div>
         </div>
-        <div style="flex:1;text-align:center;padding:0 12px;border-right:1px solid var(--border)">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px;background:linear-gradient(135deg,var(--brand),var(--brand-l))">4</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">QQ 群响应</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">@机器人提问，群里直接答，也能查数据</div>
-          <a href="#对话链接-市场-4" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+      </div>
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">QQ 群响应</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">@机器人提问，群里直接答，也能查数据</div>
         </div>
-        <div style="flex:1;text-align:center;padding:0 12px">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px;background:linear-gradient(135deg,var(--brand),var(--brand-l))">5</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">竞品知识</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">行业对比、竞品分析，知识库补录</div>
-          <a href="#对话链接-市场-5" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+      </div>
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--green),#34D399)">5</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">竞品知识</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">行业对比、竞品分析，知识库补录</div>
         </div>
       </div>
     </div>
