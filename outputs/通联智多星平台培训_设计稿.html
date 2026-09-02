@@ -1368,83 +1368,62 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
 
 </div>
 <div class="slide" data-index="17">
-  <div class="blob blob-blue" style="width:225px;height:225px;top:-45px;right:20%"></div>
-  <div class="blob blob-orange" style="width:180px;height:180px;bottom:-40px;left:10%;opacity:.06"></div>
+  <div class="blob blob-blue" style="width:200px;height:200px;top:-40px;right:25%"></div>
+  <div class="blob blob-orange" style="width:160px;height:160px;bottom:-35px;left:15%;opacity:.06"></div>
   <div class="content">
     <div class="sec-title">运营实战</div>
-    <div class="sec-sub">问题排查 · 数据查询 · 商户全景 · 产品学习</div>
-    <div style="display:flex;gap:18px;flex:1;min-height:0">
-      <!-- Left: 核心场景 1 & 2 -->
-      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-width:0">
+    <div class="sec-sub" style="margin-bottom:12px">6 大高频场景，覆盖日常运营全流程</div>
+    <div style="display:flex;gap:20px;flex:1;min-height:0">
+      <!-- Left: 核心场景 1 & 2（详细） -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;min-width:0">
         <div class="scene-card" style="flex:1">
           <div class="scene-card-header">
             <div class="num">1</div>
             <h3>排查业务系统问题</h3>
           </div>
-          <div style="padding:7px 11px;border-radius:8px;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);font-size:13px;font-weight:600;color:var(--brand);line-height:1.5;border-left:2px solid var(--brand)">&#x2728; 加上系统名 + 错误信息，精准度显著提升</div>
-          <div class="scene-tag">&#x1f4cb; 商户反馈交易失败、签名验证不通过</div>
-          <div class="flow-steps">
-            <div class="flow-step blue">新建对话</div><span class="flow-arrow">&rarr;</span>
-            <div class="flow-step blue">输入错误信息</div><span class="flow-arrow">&rarr;</span>
-            <div class="flow-step blue">AI 分步排查</div><span class="flow-arrow">&rarr;</span>
-            <div class="flow-step blue">追问细节</div>
-          </div>
+          <div style="font-size:13px;color:var(--ink2);line-height:1.6">商户反馈交易失败、签名验证不通过等问题时，带上<strong style="color:var(--brand)">系统名 + 错误信息</strong>提问，AI 分步排查并给出处理建议</div>
           <div class="qa-bubble blue"><span class="qa-label blue">推荐提问</span>"收付通交易返回验证签名失败，如何处理？"</div>
         </div>
         <div class="scene-card" style="flex:1">
           <div class="scene-card-header">
-            <div class="num">2</div>
+            <div class="num" style="background:linear-gradient(135deg,var(--green),#34D399)">2</div>
             <h3>查询商户经营数据</h3>
           </div>
-          <div style="padding:7px 11px;border-radius:8px;background:linear-gradient(135deg,#ECFDF5,#D1FAE5);font-size:13px;font-weight:600;color:var(--green);line-height:1.5;border-left:2px solid var(--green)">&#x2728; 以前登收付通再切收银宝，现在一个对话框搞定</div>
-          <div class="scene-tag">&#x1f4cb; 了解某商户的交易、结算、余额等</div>
-          <div class="flow-steps">
-            <div class="flow-step green">输入商户号</div><span class="flow-arrow">&rarr;</span>
-            <div class="flow-step green">AI 调接口</div><span class="flow-arrow">&rarr;</span>
-            <div class="flow-step green">返回数据</div><span class="flow-arrow">&rarr;</span>
-            <div class="flow-step green">可追问</div>
-          </div>
+          <div style="font-size:13px;color:var(--ink2);line-height:1.6">无需在收付通和收银宝之间切换，<strong style="color:var(--green)">一个对话框</strong>即可查询商户交易、结算、余额等数据</div>
           <div class="qa-bubble blue"><span class="qa-label blue">推荐提问</span>"帮我查一下商户号 8001234567 今天的交易统计"</div>
         </div>
       </div>
-      <!-- Right: 精简场景 3-6 -->
-      <div style="flex:0 0 44%;display:flex;flex-direction:column;gap:8px;min-width:0">
-        <div class="scene-card" style="padding:12px 14px;gap:5px">
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="num" style="width:26px;height:26px;border-radius:7px;font-size:14px">3</div>
-            <div style="font-size:15px;font-weight:700;color:var(--ink)">商户全景信息掌握</div>
+      <!-- Right: 场景 3-6（精简） -->
+      <div style="flex:0 0 42%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;min-width:0">
+        <div class="scene-card" style="padding:12px 13px;gap:4px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <div class="num" style="width:24px;height:24px;border-radius:6px;font-size:13px">3</div>
+            <div style="font-size:14px;font-weight:700;color:var(--ink)">商户全景</div>
           </div>
-          <div style="font-size:12px;color:var(--ink2);line-height:1.5">新接手商户需快速了解全貌：基本信息 → 签约产品 → 结算账户 → 余额结算，一次对话完事</div>
-          <div style="font-size:12px;color:var(--brand);font-weight:600">"商户 8001234567 的基本信息和签约产品是什么？"</div>
+          <div style="font-size:11.5px;color:var(--ink2);line-height:1.5">基本信息、签约产品、结算账户一次查清</div>
         </div>
-        <div class="scene-card" style="padding:12px 14px;gap:5px;border-top-color:var(--accent)">
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="num" style="width:26px;height:26px;border-radius:7px;font-size:14px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
-            <div style="font-size:15px;font-weight:700;color:var(--ink)">商户问题诊断</div>
+        <div class="scene-card" style="padding:12px 13px;gap:4px;border-top-color:var(--accent)">
+          <div style="display:flex;align-items:center;gap:6px">
+            <div class="num" style="width:24px;height:24px;border-radius:6px;font-size:13px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
+            <div style="font-size:14px;font-weight:700;color:var(--ink)">问题诊断</div>
           </div>
-          <div style="font-size:12px;color:var(--ink2);line-height:1.5">商户交易异常需快速定位：输入"交易诊断 + 流水号"→ AI 调用诊断接口 → 返回失败原因和处理建议</div>
-          <div style="font-size:12px;color:var(--accent);font-weight:600">"交易诊断 流水号 2026082012345678"</div>
+          <div style="font-size:11.5px;color:var(--ink2);line-height:1.5">输入流水号，AI 定位交易失败原因</div>
         </div>
-        <div class="scene-card" style="padding:12px 14px;gap:5px;border-top-color:var(--accent)">
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="num" style="width:26px;height:26px;border-radius:7px;font-size:14px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">5</div>
-            <div style="font-size:15px;font-weight:700;color:var(--ink)">产品知识快速学习</div>
+        <div class="scene-card" style="padding:12px 13px;gap:4px;border-top-color:var(--accent)">
+          <div style="display:flex;align-items:center;gap:6px">
+            <div class="num" style="width:24px;height:24px;border-radius:6px;font-size:13px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">5</div>
+            <div style="font-size:14px;font-weight:700;color:var(--ink)">产品学习</div>
           </div>
-          <div style="font-size:12px;color:var(--ink2);line-height:1.5">拆分提问更聚焦：先问概念 → 再问流程 → 最后问对比，比一口气甩一大段好用得多</div>
-          <div style="font-size:12px;color:var(--accent);font-weight:600">"解释一下协议支付的定义和适用场景"</div>
+          <div style="font-size:11.5px;color:var(--ink2);line-height:1.5">拆分提问：概念 → 流程 → 对比</div>
         </div>
-        <div class="scene-card" style="padding:12px 14px;gap:5px;border-top-color:var(--accent)">
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="num" style="width:26px;height:26px;border-radius:7px;font-size:14px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">6</div>
-            <div style="font-size:15px;font-weight:700;color:var(--ink)">知识库建设与维护</div>
+        <div class="scene-card" style="padding:12px 13px;gap:4px;border-top-color:var(--accent)">
+          <div style="display:flex;align-items:center;gap:6px">
+            <div class="num" style="width:24px;height:24px;border-radius:6px;font-size:13px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">6</div>
+            <div style="font-size:14px;font-weight:700;color:var(--ink)">知识库</div>
           </div>
-          <div style="font-size:12px;color:var(--ink2);line-height:1.5">创建部门分组 → 上传文档 → 团队共享 → 定期维护，持续喂高质量文档让 AI 越用越准</div>
-          <div style="font-size:12px;color:var(--accent);font-weight:600">"支持上传哪些格式的文件到知识库？"</div>
+          <div style="font-size:11.5px;color:var(--ink2);line-height:1.5">上传文档 → 团队共享 → 持续维护</div>
         </div>
       </div>
-    </div>
-    <div class="tip" style="margin-top:8px;font-size:13px">
-      <span style="font-size:15px;margin-right:3px">&#x1f4a1;</span> <strong>运营小技巧：</strong>提问时带上关键信息（系统名、商户号、错误码），AI 回答会更精准。
     </div>
   </div>
   <div class="page-footer"><span>通联智多星平台交流</span><span>15 / 21</span></div>
