@@ -1372,8 +1372,8 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         <div style="font-size:14px;color:var(--ink2);line-height:1.6">商户反馈交易失败、签名验证不通过等问题时，带上<strong style="color:var(--brand)">系统名 + 错误信息</strong>提问，AI 分步排查并给出处理建议</div>
         <div class="qa-bubble blue"><span class="qa-label blue">推荐提问</span>"收付通交易返回验证签名失败，如何处理？"</div>
         <a href="https://ai.allinpay.com/web/share/5ibb9qlO4mfyUh8U9NB" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--brand);text-decoration:none;margin-top:4px;opacity:.75;transition:opacity .2s" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.75'">&#x1f4ac; 查看对话详情 &rarr;</a>
-        <div style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);max-height:180px;overflow-y:auto;background:#fff">
-          <img src="ops_case_debug.png" alt="排查业务系统问题案例" style="width:100%;height:auto;display:block;min-height:180px;object-fit:contain">
+        <div class="screenshot-card" data-img="ops_case_debug.png" style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);max-height:160px;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.02)';this.style.boxShadow='0 4px 12px rgba(0,0,0,.1)';this.style.borderColor='var(--brand)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <img src="ops_case_debug.png" alt="排查业务系统问题案例" style="width:100%;height:auto;display:block;min-height:160px;object-fit:contain">
         </div>
       </div>
       <div class="scene-card" style="flex:1">
@@ -1384,46 +1384,39 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         <div style="font-size:14px;color:var(--ink2);line-height:1.6">无需在收付通和收银宝之间切换，<strong style="color:var(--green)">一个对话框</strong>即可查询商户交易、结算、余额等数据</div>
         <div class="qa-bubble blue"><span class="qa-label blue">推荐提问</span>"帮我查一下商户号 8001234567 今天的交易统计"</div>
         <a href="https://ai.allinpay.com/web/share/v6bnoYVuyoP6awomRnh" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--brand);text-decoration:none;margin-top:4px;opacity:.75;transition:opacity .2s" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.75'">&#x1f4ac; 查看对话详情 &rarr;</a>
-        <div style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);max-height:180px;overflow-y:auto;background:#fff">
-          <img src="ops_case_query.png" alt="查询商户经营数据案例" style="width:100%;height:auto;display:block;min-height:180px;object-fit:contain">
+        <div class="screenshot-card" data-img="ops_case_query.png" style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);max-height:160px;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.02)';this.style.boxShadow='0 4px 12px rgba(0,0,0,.1)';this.style.borderColor='var(--green)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <img src="ops_case_query.png" alt="查询商户经营数据案例" style="width:100%;height:auto;display:block;min-height:160px;object-fit:contain">
         </div>
       </div>
     </div>
     <!-- 底部长条：场景 3-6 -->
-    <div style="margin-top:14px;padding:12px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;gap:0">
-      <div style="font-size:13px;font-weight:700;color:var(--mut);margin-right:16px;white-space:nowrap">更多场景 &rarr;</div>
-      <div style="flex:1;display:flex;gap:0">
-        <div style="flex:1;text-align:center;padding:0 12px;border-right:1px solid var(--border)">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px">3</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">商户全景</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">基本信息、签约产品、结算账户一次查清</div>
-        <a href="#对话链接-运营-3" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+    <div style="margin-top:12px;display:flex;gap:10px">
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0">3</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">商户全景</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">基本信息、签约产品、结算账户一次查清</div>
         </div>
-        <div style="flex:1;text-align:center;padding:0 12px;border-right:1px solid var(--border)">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">问题诊断</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">输入流水号，AI 定位交易失败原因</div>
-        <a href="#对话链接-运营-4" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+      </div>
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#FF9F6B)">4</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">问题诊断</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">输入流水号，AI 定位交易失败原因</div>
         </div>
-        <div style="flex:1;text-align:center;padding:0 12px;border-right:1px solid var(--border)">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">5</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">产品学习</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">拆分提问：概念 → 流程 → 对比</div>
-        <a href="#对话链接-运营-5" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+      </div>
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#FF9F6B)">5</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">产品学习</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">拆分提问：概念 → 流程 → 对比</div>
         </div>
-        <div style="flex:1;text-align:center;padding:0 12px">
-          <div style="display:inline-flex;align-items:center;gap:5px;margin-bottom:3px">
-            <div class="num" style="width:22px;height:22px;border-radius:5px;font-size:12px;background:linear-gradient(135deg,var(--accent),#FF9F6B)">6</div>
-            <span style="font-size:13px;font-weight:700;color:var(--ink)">知识库</span>
-          </div>
-          <div style="font-size:11px;color:var(--ink2)">上传文档 → 团队共享 → 持续维护</div>
-        <a href="#对话链接-运营-6" style="text-decoration:none;color:inherit" title="查看对话详情">&#x1f4ac;</a>
+      </div>
+      <div style="flex:1;padding:10px 14px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;align-items:center;gap:10px;cursor:default;transition:transform .2s" onmouseenter="this.style.transform='translateY(-1px)'" onmouseleave="this.style.transform='none'">
+        <div class="num" style="width:26px;height:26px;border-radius:6px;font-size:13px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),#FF9F6B)">6</div>
+        <div style="min-width:0;flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink)">知识库</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.4">上传文档 → 团队共享 → 持续维护</div>
         </div>
       </div>
     </div>
@@ -1592,7 +1585,9 @@ const cardLabels = {
   'qiyeweixin_path.png': '企业微信',
   'kb_create_group.png': '创建知识分组',
   'kb_upload_file.png': '上传知识文件',
-  'kb_url_grab.png': 'URL 抓取知识'
+  'kb_url_grab.png': 'URL 抓取知识',
+  'ops_case_debug.png': '排查业务系统问题 — 案例详情',
+  'ops_case_query.png': '查询商户经营数据 — 案例详情'
 };
 
 document.querySelectorAll('.screenshot-card').forEach(card => {
