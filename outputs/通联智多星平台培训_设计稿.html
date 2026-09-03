@@ -1443,6 +1443,10 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         </div>
         <div style="font-size:14px;color:var(--ink2);line-height:1.6">拜访商户前需快速了解产品，补充具体业务场景后 AI 推荐方案，追问费率和开通流程</div>
         <div class="qa-bubble blue"><span class="qa-label blue">推荐提问</span>"商户想做线上收款，支持微信和支付宝，有什么产品推荐？"</div>
+        <a href="https://ai.allinpay.com/web/share/paUcK6KEHsTAKPSuBHe" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--brand);text-decoration:none;margin-top:4px;opacity:.75;transition:opacity .2s" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='.75'">&#x1f4ac; 查看对话详情 &rarr;</a>
+        <div class="screenshot-card" data-img="mkt_case_product.png" style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);max-height:160px;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.02)';this.style.boxShadow='0 4px 12px rgba(0,0,0,.1)';this.style.borderColor='var(--brand)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <img src="mkt_case_product.png" alt="向商户介绍产品方案案例" style="width:100%;height:auto;display:block;min-height:160px;object-fit:contain">
+        </div>
       </div>
       <div class="scene-card" style="flex:1">
         <div class="scene-card-header">
@@ -1585,7 +1589,8 @@ const cardLabels = {
   'kb_upload_file.png': '上传知识文件',
   'kb_url_grab.png': 'URL 抓取知识',
   'ops_case_debug.png': '排查业务系统问题 — 案例详情',
-  'ops_case_query.png': '查询商户经营数据 — 案例详情'
+  'ops_case_query.png': '查询商户经营数据 — 案例详情',
+  'mkt_case_product.png': '向商户介绍产品方案 — 案例详情'
 };
 
 document.querySelectorAll('.screenshot-card').forEach(card => {
