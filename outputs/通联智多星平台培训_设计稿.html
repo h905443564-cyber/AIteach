@@ -1315,33 +1315,46 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
   <div class="content">
     <div class="sec-title">多端上线，已全面覆盖</div>
     <div class="sec-sub">已支持多入口访问，员工商户都能用</div>
-    <!-- 三大登录入口 -->
-    <div style="display:flex;gap:15px;flex:1;align-items:flex-end;justify-content:center">
-      <div style="flex:0 0 22%;display:flex;flex-direction:column;align-items:center">
-        <div style="margin-bottom:6px"><span style="display:inline-block;padding:4px 12px;border-radius:14px;background:var(--green);color:#fff;font-size:13px;font-weight:600">企业微信</span></div>
-        <div class="screenshot-card" data-img="qiyeweixin_path.png" style="width:100%;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 32px rgba(16,185,129,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
-          <img src="qiyeweixin_path.png" alt="企业微信入口界面" style="width:100%;height:auto;max-height:225px;object-fit:contain;display:block">
-        </div>
-        <div style="margin-top:6px;padding:6px 9px;border-radius:var(--radius-sm);background:var(--bg);font-size:12px;color:var(--mut);text-align:center;line-height:1.6">
-          工作台 &rarr; <strong style="color:var(--green)">核心支付产品中心</strong><br>直接提问或单点登录
-        </div>
-      </div>
-      <div style="flex:0 0 46%;display:flex;flex-direction:column;align-items:center">
+    <!-- 入口展示：两行布局 -->
+    <!-- 第一行：PC 网页端 -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px;min-height:0">
+      <div style="display:flex;flex-direction:column;align-items:center;flex:1">
         <div style="margin-bottom:6px"><span style="display:inline-block;padding:5px 15px;border-radius:15px;background:var(--brand);color:#fff;font-size:14px;font-weight:600">PC 网页端</span></div>
-        <div class="screenshot-card" data-img="pc_login_screenshot.png" style="width:100%;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(0,91,172,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
-          <img src="pc_login_screenshot.png" alt="PC 网页端登录界面" style="width:100%;height:auto;max-height:225px;display:block">
+        <div class="screenshot-card" data-img="pc_login_screenshot.png" style="width:100%;max-width:520px;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.02)';this.style.boxShadow='0 12px 32px rgba(0,91,172,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
+          <img src="pc_login_screenshot.png" alt="PC 网页端登录界面" style="width:100%;height:auto;max-height:200px;display:block">
         </div>
         <div style="margin-top:6px;padding:6px 9px;border-radius:var(--radius-sm);background:var(--bg);font-size:12px;color:var(--mut);text-align:center;line-height:1.6">
           浏览器打开 <strong style="color:var(--brand)">ai.allinpay.com</strong><br>企业微信扫码登录
         </div>
       </div>
-      <div style="flex:0 0 26%;display:flex;flex-direction:column;align-items:center">
-        <div style="margin-bottom:6px"><span style="display:inline-block;padding:4px 12px;border-radius:14px;background:var(--accent);color:#fff;font-size:13px;font-weight:600">好老板 APP</span></div>
-        <div class="screenshot-card" data-img="haolaoban_app_screenshot.png" style="width:100%;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 32px rgba(255,107,53,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
-          <img src="haolaoban_app_screenshot.png" alt="好老板 APP 入口界面" style="width:100%;height:auto;max-height:225px;object-fit:contain;display:block">
+      <!-- 第二行：企业微信 + 好老板APP + QQ群聊机器人 -->
+      <div style="display:flex;gap:15px;justify-content:center">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="margin-bottom:6px"><span style="display:inline-block;padding:4px 12px;border-radius:14px;background:var(--green);color:#fff;font-size:13px;font-weight:600">企业微信</span></div>
+          <div class="screenshot-card" data-img="qiyeweixin_path.png" style="width:100%;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 32px rgba(16,185,129,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
+            <img src="qiyeweixin_path.png" alt="企业微信入口界面" style="width:100%;height:auto;max-height:150px;object-fit:contain;display:block">
+          </div>
+          <div style="margin-top:6px;padding:6px 9px;border-radius:var(--radius-sm);background:var(--bg);font-size:12px;color:var(--mut);text-align:center;line-height:1.6">
+            工作台 &rarr; <strong style="color:var(--green)">核心支付产品中心</strong><br>直接提问或单点登录
+          </div>
         </div>
-        <div style="margin-top:6px;padding:6px 9px;border-radius:var(--radius-sm);background:var(--bg);font-size:12px;color:var(--mut);text-align:center;line-height:1.6">
-          打开 APP &rarr; 点击<strong style="color:var(--accent)">发仔图标</strong><br>智能问答 + 交易查询
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="margin-bottom:6px"><span style="display:inline-block;padding:4px 12px;border-radius:14px;background:var(--accent);color:#fff;font-size:13px;font-weight:600">好老板 APP</span></div>
+          <div class="screenshot-card" data-img="haolaoban_app_screenshot.png" style="width:100%;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 32px rgba(255,107,53,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
+            <img src="haolaoban_app_screenshot.png" alt="好老板 APP 入口界面" style="width:100%;height:auto;max-height:150px;object-fit:contain;display:block">
+          </div>
+          <div style="margin-top:6px;padding:6px 9px;border-radius:var(--radius-sm);background:var(--bg);font-size:12px;color:var(--mut);text-align:center;line-height:1.6">
+            打开 APP &rarr; 点击<strong style="color:var(--accent)">发仔图标</strong><br>智能问答 + 交易查询
+          </div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="margin-bottom:6px"><span style="display:inline-block;padding:4px 12px;border-radius:14px;background:var(--green);color:#fff;font-size:13px;font-weight:600">QQ 群聊机器人</span></div>
+          <div class="screenshot-card" data-img="qqbot_qr.png" style="width:100%;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1);background:#fff;display:flex;justify-content:center;align-items:center;cursor:pointer;transition:transform .2s,box-shadow .2s" onmouseenter="this.style.transform='scale(1.03)';this.style.boxShadow='0 12px 32px rgba(16,185,129,.18)'" onmouseleave="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.1)'">
+            <img src="qqbot_qr.png" alt="QQ 群聊机器人二维码" style="width:100%;height:auto;max-height:150px;object-fit:contain;display:block">
+          </div>
+          <div style="margin-top:6px;padding:6px 9px;border-radius:var(--radius-sm);background:var(--bg);font-size:12px;color:var(--mut);text-align:center;line-height:1.6">
+            扫码加入 QQ 群<br><strong style="color:var(--green)">@机器人</strong> 即可提问
+          </div>
         </div>
       </div>
     </div>
@@ -1590,7 +1603,8 @@ const cardLabels = {
   'kb_url_grab.png': 'URL 抓取知识',
   'ops_case_debug.png': '排查业务系统问题 — 案例详情',
   'ops_case_query.png': '查询商户经营数据 — 案例详情',
-  'mkt_case_product.png': '向商户介绍产品方案 — 案例详情'
+  'mkt_case_product.png': '向商户介绍产品方案 — 案例详情',
+  'qqbot_qr.png': 'QQ 群聊机器人二维码'
 };
 
 document.querySelectorAll('.screenshot-card').forEach(card => {
