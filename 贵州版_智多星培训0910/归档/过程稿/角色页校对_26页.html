@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280,height=720">
+<title>通联智多星平台交流 · 贵州分公司</title>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN TOKENS（与广东版一致，保证两套材料视觉同源）
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --brand:     #005BAC;
+  --brand-d:   #003D75;
+  --brand-l:   #3A8FD6;
+  --brand-xl:  #E8F2FC;
+  --accent:    #FF6B35;
+  --accent-l:  #FFF0E8;
+  --green:     #10B981;
+  --green-l:   #ECFDF5;
+  --red:       #EF4444;
+  --red-l:     #FEF2F2;
+  --ink:       #1E293B;
+  --ink2:      #475569;
+  --mut:       #94A3B8;
+  --bg:        #F8FAFC;
+  --card:      #FFFFFF;
+  --border:    #E2E8F0;
+  --shadow:    0 3px 18px rgba(0,59,112,.08);
+  --shadow-lg: 0 9px 36px rgba(0,59,112,.12);
+  --radius:    12px;
+  --radius-sm: 8px;
+  --font:      'Microsoft YaHei','PingFang SC','Segoe UI',system-ui,sans-serif;
+  /* 发仔专属色 */
+  --fz:        #E4393C;
+  --fz-d:      #B01E22;
+  --fz-l:      #FEF2F2;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:18px;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidden;height:100vh;width:100vw}
+
+/* ═══════════════════════════════════════════════════════════
+   SLIDE ENGINE
+   ═══════════════════════════════════════════════════════════ */
+.deck{position:relative;width:100vw;height:100vh}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  padding:40px 40px 30px;
+  opacity:0;pointer-events:none;
+  transform:translateX(30px);
+  transition:opacity .45s ease,transform .45s ease;
+  overflow:hidden;
+}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0)}
+.slide.exit{opacity:0;transform:translateX(-30px)}
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+.nav{
+  position:fixed;bottom:8px;right:16px;z-index:100;
+  display:flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(9px);
+  padding:6px 12px;border-radius:30px;
+  box-shadow:0 1.5px 12px rgba(0,0,0,.08);
+  font-size:13px;color:var(--mut);
+}
+.nav button{
+  width:27px;height:27px;border:none;border-radius:50%;
+  background:var(--brand);color:#fff;cursor:pointer;
+  display:grid;place-items:center;font-size:16px;
+  transition:background .2s;
+}
+.nav button:hover{background:var(--brand-d)}
+.nav button:disabled{background:var(--border);cursor:default}
+.dots{display:flex;gap:4px}
+.dots span{width:5px;height:5px;border-radius:50%;background:var(--border);transition:all .3s;cursor:pointer}
+.dots span.on{background:var(--brand);width:15px;border-radius:3px}
+
+/* ═══════════════════════════════════════════════════════════
+   REUSABLE COMPONENTS
+   ═══════════════════════════════════════════════════════════ */
+.sec-title{font-size:46px;font-weight:700;color:var(--brand);margin-bottom:7px;letter-spacing:-.5px}
+.sec-sub{font-size:19px;color:var(--mut);margin-bottom:22px}
+
+.badge{display:inline-flex;align-items:center;gap:3px;padding:4px 12px;border-radius:15px;font-size:14px;font-weight:600}
+.badge-blue{background:var(--brand-xl);color:var(--brand)}
+.badge-green{background:var(--green-l);color:var(--green)}
+.badge-orange{background:var(--accent-l);color:var(--accent)}
+.badge-red{background:var(--red-l);color:var(--red)}
+
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.18;pointer-events:none;z-index:0}
+.blob-blue{background:var(--brand)}
+.blob-orange{background:var(--accent)}
+
+.content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;min-height:0}
+
+.tip{display:flex;align-items:flex-start;gap:9px;padding:11px 16px;border-radius:var(--radius-sm);
+  background:var(--brand-xl);border-left:3px solid var(--brand);font-size:15px;color:var(--brand-d);line-height:1.6}
+.tip-warn{background:var(--accent-l);border-left-color:var(--accent);color:#9A3412}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;min-height:0}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;flex:1;min-height:0}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:21px;flex:1;min-height:0}
+
+.chips-row{margin-top:auto;padding-top:10px;border-top:1px dashed var(--border);display:flex;flex-wrap:wrap;gap:6px}
+.mchip{display:inline-block;padding:3px 10px;border-radius:6px;font-size:13px;font-weight:600;line-height:1.5}
+.mchip-blue{background:var(--brand-xl);color:var(--brand)}
+.mchip-orange{background:var(--accent-l);color:var(--accent)}
+.mchip-green{background:var(--green-l);color:var(--green)}
+.mchip-red{background:var(--fz-l);color:var(--fz)}
+
+.scene-card{padding:18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);
+  box-shadow:var(--shadow);border-top:2px solid var(--brand);display:flex;flex-direction:column;gap:9px}
+.scene-card .num{width:33px;height:33px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));
+  color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px}
+.scene-card h3{font-size:19px;font-weight:700;color:var(--ink)}
+.scene-card .desc{font-size:14px;color:var(--ink2);line-height:1.7;flex:1}
+
+.agenda-item{display:flex;align-items:center;gap:18px;padding:16px 22px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)}
+.agenda-num{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-l));
+  color:#fff;display:grid;place-items:center;font-weight:800;font-size:24px;flex-shrink:0}
+.agenda-item h3{font-size:21px;font-weight:700;color:var(--ink)}
+.agenda-item p{font-size:15px;color:var(--mut);margin-top:3px}
+
+/* Closing & divider */
+.closing-bg,.divider-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--brand-d) 0%,var(--brand) 50%,var(--brand-l) 100%)}
+.divider-bg{background:linear-gradient(160deg,var(--brand-d) 0%,var(--brand) 60%,#1A7FD4 100%)}
+.closing-content,.divider-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center}
+.closing-content{align-items:center;text-align:center;color:#fff}
+.divider-content{padding-left:21px}
+.divider-chips{display:flex;gap:10px;margin-top:27px;flex-wrap:wrap}
+.divider-chip{padding:9px 20px;border-radius:21px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.2);color:#fff;font-size:16px;font-weight:500}
+
+.page-footer{display:flex;justify-content:space-between;align-items:center;padding-top:12px;font-size:13px;
+  color:var(--mut);position:relative;z-index:1}
+.cover-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+
+/* ═══════════════════════════════════════════════════════════
+   贵州版新增组件
+   ═══════════════════════════════════════════════════════════ */
+.stage-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.stage-chip{display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:14px;
+  font-size:13px;font-weight:700;color:#fff;background:var(--brand)}
+.stage-chip.s2{background:var(--accent)}
+.stage-chip.s3{background:var(--green)}
+.stage-note{font-size:13px;color:var(--mut)}
+
+/* 待补充占位块（框架阶段用，逐页填充后删除） */
+.ph{border:1.5px dashed #F59E0B;border-radius:var(--radius);
+  background:repeating-linear-gradient(45deg,#FFFBEB 0 12px,#FEF3C7 12px 24px);
+  padding:14px 18px;display:flex;flex-direction:column;gap:7px}
+.ph-h{font-size:15px;font-weight:700;color:#92400E;display:flex;align-items:center;gap:7px}
+.ph-b{font-size:14px;color:#78350F;line-height:1.75}
+
+/* 发仔形象容器：透明通道 PNG 直接融入背景（不使用卡片框） */
+.fz-panel{position:relative;display:grid;place-items:center;flex-shrink:0;
+  padding:0;background:none;border-radius:0;box-shadow:none}
+.fz-panel::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:132%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.26) 0%,rgba(255,255,255,.08) 42%,transparent 68%);
+  filter:blur(10px)}
+.fz-panel::after{content:'';position:absolute;left:50%;bottom:1%;transform:translateX(-50%);
+  width:56%;height:5%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(0,23,48,.26) 0%,rgba(0,23,48,.10) 45%,transparent 76%);
+  filter:blur(5px)}
+.fz-panel img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block;
+  filter:drop-shadow(0 6px 14px rgba(0,31,63,.18))}
+/* 浅色背景（内容页）：改用冷色淡影子柔和光 */
+.fz-panel.fz-light::before{background:radial-gradient(circle,rgba(0,91,172,.10) 0%,rgba(0,91,172,.04) 46%,transparent 70%)}
+.fz-panel.fz-light::after{background:radial-gradient(ellipse,rgba(0,59,112,.14) 0%,rgba(0,59,112,.06) 45%,transparent 76%)}
+.fz-panel.fz-light img{filter:drop-shadow(0 8px 16px rgba(0,59,112,.14))}
+
+/* 角色卡 */
+.role-card{padding:16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);
+  box-shadow:var(--shadow);border-top:3px solid var(--brand);display:flex;flex-direction:column;gap:8px}
+.role-card .rnum{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));
+  color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px}
+.role-card h3{font-size:18px;font-weight:700;color:var(--ink)}
+.role-card .desc{font-size:13px;color:var(--ink2);line-height:1.65;flex:1}
+
+/* ═══════════════════════════════════════════════════════════
+   角色装配页组件（v20260914 新增）
+   ═══════════════════════════════════════════════════════════ */
+.role-hero{display:flex;align-items:flex-start;gap:16px;padding:10px 16px;border-radius:var(--radius);
+  background:linear-gradient(120deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.14);margin-bottom:9px}
+.role-hero .rname{font-size:24px;font-weight:800;color:var(--brand);line-height:1.15}
+.role-hero .rtag{font-size:13.5px;font-weight:700;color:var(--brand-l)}
+.role-hero .rline{font-size:14px;color:var(--ink2);line-height:1.5}
+
+.cap-block{padding:10px 12px;border-radius:var(--radius-sm);background:var(--card);
+  border:1px solid var(--border);display:flex;flex-direction:column;gap:5px}
+.cap-block .ct{font-size:13.5px;font-weight:700;color:var(--brand);display:flex;align-items:center;gap:6px}
+.cap-block .cb{font-size:12px;color:var(--ink2);line-height:1.6}
+.kchip{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11.5px;font-weight:600;
+  background:var(--brand-xl);color:var(--brand);margin:2px 3px 0 0}
+.kchip-g{background:var(--green-l);color:var(--green)}
+.kchip-o{background:var(--accent-l);color:var(--accent)}
+.kchip-r{background:var(--fz-l);color:var(--fz)}
+
+.qa-row{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ink2);line-height:1.5}
+.qa-row .q{color:var(--brand);font-weight:700;flex-shrink:0}
+
+.matrix{width:100%;border-collapse:collapse;font-size:12px;background:var(--card)}
+.matrix th{background:var(--brand);color:#fff;font-weight:700;padding:5px 4px;font-size:12px;line-height:1.3}
+.matrix th.g{background:var(--brand-d)}
+.matrix td{padding:4px 4px;text-align:center;border:1px solid var(--border);color:var(--ink2)}
+.matrix td.lbl{text-align:left;font-weight:600;color:var(--ink);white-space:nowrap;font-size:12px}
+.matrix tr:nth-child(even) td{background:#FBFCFE}
+.matrix .on{color:var(--brand);font-weight:800}
+.matrix .sub{color:#CBD5E1}
+.matrix .off{color:#E2E8F0}
+
+.formula{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);font-size:15px;font-weight:600;color:var(--ink)}
+.formula .fbox{padding:7px 14px;border-radius:8px;font-size:14px;font-weight:700}
+.formula .op{color:var(--mut);font-size:18px}</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- ════════ P1 封面 ════════ -->
+<div class="slide" data-index="0">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,#003D75 0%,#005BAC 40%,#3A8FD6 100%)"></div>
+  <div class="blob blob-orange" style="width:450px;height:450px;top:-90px;right:-75px;opacity:.12"></div>
+  <div class="blob blob-blue" style="width:525px;height:525px;bottom:-180px;left:-90px;opacity:.15"></div>
+  <div style="position:absolute;inset:0;z-index:0;opacity:.04;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:30px 30px"></div>
+  <div class="cover-wrap">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:48px">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+          <div style="width:42px;height:4px;border-radius:2px;background:var(--accent)"></div>
+          <span style="color:rgba(255,255,255,.7);font-size:18px;letter-spacing:2px">TONG LIAN AI PLATFORM · GUIZHOU</span>
+        </div>
+        <h1 style="font-size:66px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px;letter-spacing:-1px">
+          通联智多星平台<br>
+          <span style="color:var(--accent)">贵州分公司交流</span>
+        </h1>
+        <p style="font-size:23px;color:rgba(255,255,255,.75);margin-bottom:36px;line-height:1.6">
+          由「发仔」提供服务 · 智多星是背后的 AI 底座
+        </p>
+        <div style="display:flex;gap:13px;flex-wrap:wrap">
+          <div style="padding:9px 21px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:16px">&#x1f4c5;&ensp;2026 年度交流</div>
+          <div style="padding:9px 21px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:16px">&#x1f3e2;&ensp;贵州分公司</div>
+          <div style="padding:9px 21px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:16px">&#x1f916;&ensp;智能体工厂 · 场景共创</div>
+        </div>
+      </div>
+      <div class="fz-panel" style="width:350px;height:400px">
+        <img fazai_mascot.png" alt="发仔" style="transform:scale(1.12)">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ P2 交流内容概览 ════════ -->
+<div class="slide" data-index="1">
+  <div class="blob blob-blue" style="width:300px;height:300px;top:-75px;right:-38px"></div>
+  <div class="content">
+    <div class="sec-title">交流内容概览</div>
+    <div class="sec-sub">按「演示前铺垫 → 演示中场景 → 演示后局限」三段推进</div>
+    <div style="display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center">
+      <div class="agenda-item">
+        <div class="agenda-num">01</div>
+        <div><h3>发仔与智多星</h3><p>谁在服务你 · 背后的 AI 底座 · 智能体工厂的能力从哪来</p></div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">02</div>
+        <div><h3>按角色的场景方案</h3><p>6 个核心角色的能力打包 · 已落地场景 + 开放 MCP 共创</p></div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">03</div>
+        <div><h3>局限与迭代</h3><p>现阶段能力边界 · 后续迭代计划 · 邀请分公司一起共建</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>通联智多星 · 贵州分公司交流</span><span>2 / 26</span></div>
+</div>
+
+<!-- ════════ P3 分隔页 PART 01 ════════ -->
+<div class="slide" data-index="2">
+  <div class="divider-bg"></div>
+  <div style="position:absolute;inset:0;z-index:0;opacity:.05;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:27px 27px"></div>
+  <div class="divider-content">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <div style="width:36px;height:3px;border-radius:1.5px;background:var(--accent)"></div>
+      <span style="color:rgba(255,255,255,.6);font-size:18px;letter-spacing:2px">PART 01</span>
+    </div>
+    <h2 style="font-size:56px;font-weight:800;color:#fff;margin-bottom:12px">平台认知与底座铺垫</h2>
+    <p style="font-size:22px;color:rgba(255,255,255,.7);margin-bottom:33px">先讲清「谁在服务你」，再讲清「能力从哪来」</p>
+    <div class="divider-chips">
+      <div class="divider-chip">发仔登场</div>
+      <div class="divider-chip">智多星 AI 底座</div>
+      <div class="divider-chip">智能体工厂</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ P4 发仔登场 ════════ -->
+<div class="slide" data-index="3">
+  <div class="blob blob-blue" style="width:330px;height:330px;bottom:-90px;right:-70px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">1 / 3　谁在服务你</span></div>
+    <div class="sec-title">发仔：你的 AI 服务伙伴</div>
+    <div class="sec-sub">由发仔提供服务，智多星只是它背后的 AI 底座</div>
+    <div style="display:flex;gap:26px;flex:1;min-height:0;align-items:stretch">
+      <div class="fz-panel fz-light" style="width:300px">
+        <img fazai_mascot.png" alt="发仔" style="transform:scale(1.12)">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:11px">
+        <div style="padding:14px 16px;border-radius:var(--radius);background:linear-gradient(160deg,var(--fz-l),#fff);border:1px solid rgba(228,57,60,.15);box-shadow:var(--shadow)">
+          <div style="font-size:18px;font-weight:700;color:var(--fz);margin-bottom:5px">&#x1f464; 谁在为你服务</div>
+          <div style="font-size:14px;color:var(--ink2);line-height:1.7">发仔 —— 通联的<strong>数字人服务形象</strong>。你不需要理解背后的模型与架构，只需要记住：<strong>有问题，找发仔</strong>。</div>
+        </div>
+        <div style="padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+          <div style="font-size:18px;font-weight:700;color:var(--brand);margin-bottom:5px">&#x1f4cd; 在哪能找到发仔</div>
+          <div style="font-size:14px;color:var(--ink2);line-height:1.7">好老板 APP 中的发仔入口、PC 网页端 ai.allinpay.com、企业微信、QQ 群、小程序……（详见 P17 多端入口）</div>
+        </div>
+        <div style="padding:14px 16px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow)">
+          <div style="font-size:18px;font-weight:700;color:var(--brand-d);margin-bottom:5px">&#x2699;&#xfe0f; 发仔背后是什么</div>
+          <div style="font-size:14px;color:var(--ink2);line-height:1.7"><strong>智多星</strong> —— 通联统一的 AI 底座，为发仔提供知识与数据能力。发仔是<strong>门面</strong>，智多星是<strong>底座</strong>，两者是承接关系。</div>
+        </div>
+      </div>
+    </div>
+    <div class="ph" style="margin-top:12px">
+      <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+      <div class="ph-b">发仔的定位一句话口径 / 人格设定（语气、称呼）/ 是否需要动效或视频素材。形象图已处理为透明通道版（`素材/fazai_mascot.png`，白底原图备份在同目录），可直接悬浮于渐变背景。</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>4 / 26</span></div>
+</div>
+
+<!-- ════════ P5 智多星 AI 底座 ════════ -->
+<div class="slide" data-index="4">
+  <div class="blob blob-blue" style="width:315px;height:315px;bottom:-75px;left:-60px"></div>
+  <div class="blob blob-orange" style="width:195px;height:195px;top:-38px;right:10%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">2 / 3　能力从哪来</span></div>
+    <div class="sec-title">智多星：通联统一的 AI 底座</div>
+    <div class="sec-sub">发仔背后的能力来源 —— 通联完全自主开发的 AI 基础设施层</div>
+    <div style="display:flex;gap:15px;margin-bottom:14px">
+      <div style="flex:1;padding:16px 15px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.12);box-shadow:var(--shadow)">
+        <div style="font-size:18px;font-weight:700;color:var(--brand)">做基建的</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.6;margin-top:6px">从基础设施到应用层，全链路覆盖</div>
+      </div>
+      <div style="flex:1;padding:16px 15px;border-radius:var(--radius);background:linear-gradient(160deg,var(--green-l),#fff);border:1px solid rgba(16,185,129,.12);box-shadow:var(--shadow)">
+        <div style="font-size:18px;font-weight:700;color:var(--green)">懂业务的</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.6;margin-top:6px">三级知识库打通文档中心，真正教会 AI 通联业务</div>
+      </div>
+      <div style="flex:1;padding:16px 15px;border-radius:var(--radius);background:linear-gradient(160deg,var(--accent-l),#fff);border:1px solid rgba(255,107,53,.12);box-shadow:var(--shadow)">
+        <div style="font-size:18px;font-weight:700;color:var(--accent)">能办事的</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.6;margin-top:6px">直连业务系统，问题排查、数据查询一步到位</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:15px;margin-bottom:14px">
+      <div style="flex:1;padding:15px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="font-size:17px;font-weight:700;color:var(--mut);margin-bottom:10px">&#x274c; 不是</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:15px;color:var(--ink2)">
+          <div>一个聊天机器人</div><div>市面上的通用大模型</div><div>单一功能工具</div>
+        </div>
+      </div>
+      <div style="flex:1;padding:15px 18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow)">
+        <div style="font-size:17px;font-weight:700;color:var(--brand);margin-bottom:10px">&#x2705; 而是</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:15px;color:var(--ink)">
+          <div>支撑所有智能应用的 <strong>AI 基础设施</strong></div>
+          <div>通联自研、懂通联业务的 <strong>专属底座</strong></div>
+          <div>链接通联体系的 <strong>专用 AI</strong></div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:16px 22px;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand-xl),#E8F4FD);border:1px solid rgba(0,91,172,.12)">
+      <div style="font-size:19px;font-weight:700;color:var(--brand-d);margin-bottom:6px">&#x1f517; 承接关系：发仔在前，智多星在后</div>
+      <div style="font-size:15px;color:var(--ink);line-height:1.65">分公司同事与商户直接接触的是<strong>发仔</strong>；发仔之所以能答得准、查得到，靠的是<strong>智多星底座</strong>提供的知识供给与数据调用能力。底座越强，发仔越好用。</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>5 / 26</span></div>
+</div>
+
+<!-- ════════ P6 四层技术架构 ════════ -->
+<div class="slide" data-index="5">
+  <div class="blob blob-blue" style="width:240px;height:240px;top:-50px;right:-40px"></div>
+  <div class="blob blob-orange" style="width:180px;height:180px;bottom:-40px;left:-30px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">2 / 3　能力从哪来</span></div>
+    <div class="sec-title" style="font-size:36px">通联智多星 · 四层技术架构</div>
+    <div class="sec-sub" style="margin-bottom:10px">全链路自主研发，从云基础设施到应用层完全自主可控</div>
+    <!-- 左右两栏：左＝说明 + 数据安全（不越过中缝），右＝架构图独占整个右半区 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;flex:1;min-height:0">
+      <!-- ── 左栏 ── -->
+      <div style="display:flex;flex-direction:column;gap:11px;min-height:0;padding-right:8px">
+        <div style="font-size:15px;color:var(--ink2);line-height:1.7">智多星平台采用<strong style="color:var(--brand)">四层架构</strong>设计，各层职责清晰、核心能力全部自研，确保数据安全与系统可控。</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;align-items:flex-start;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--brand);margin-top:6px;flex-shrink:0"></div><div><span style="font-size:14px;font-weight:600">用户与业务系统</span><br><span style="font-size:13px;color:var(--ink2)">对内 / 对外多渠道统一接入</span></div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--brand);margin-top:6px;flex-shrink:0"></div><div><span style="font-size:14px;font-weight:600">Agent 应用层</span><br><span style="font-size:13px;color:var(--ink2)">发仔、智能客服等应用，Skill 编排 + Tool 调用</span></div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0"></div><div><span style="font-size:14px;font-weight:600">平台管理与运营层</span><br><span style="font-size:13px;color:var(--ink2)">知识库、权限、质量评估、运维监控</span></div></div>
+          <div style="display:flex;align-items:flex-start;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);margin-top:6px;flex-shrink:0"></div><div><span style="font-size:14px;font-weight:600">内核 AI 能力层</span><br><span style="font-size:13px;color:var(--ink2)">LLM、RAG、MCP、记忆、编排等核心引擎</span></div></div>
+        </div>
+        <div style="font-size:12.5px;color:var(--mut);line-height:1.65">&#x1f3d7; 所有核心能力均为通联自研，区别于市面开源方案与互联网产品</div>
+        <div style="margin-top:auto;padding:8px 12px;border-radius:9px;background:rgba(0,91,172,.045);border:1px solid rgba(0,91,172,.1);font-size:13px;color:var(--ink2);line-height:1.6">
+          <span style="margin-right:4px">&#x1f512;</span><strong style="color:var(--brand)">数据安全：</strong>所有数据均在通联自有云环境内处理，不经过第三方模型服务商。
+        </div>
+      </div>
+      <!-- ── 右栏：架构图撑满整列高度 ── -->
+      <div style="display:flex;flex-direction:column;height:100%;min-height:0">
+        <div style="width:100%;padding:11px 18px;border-radius:10px;background:linear-gradient(135deg,#F0F4F8,#E8EDF2);border:1px solid rgba(0,91,172,.12);text-align:center;font-size:16px;font-weight:600">&#x1f464; 用户与业务系统</div>
+        <div style="font-size:16px;color:var(--brand);line-height:1;margin:4px 0;text-align:center">&#x2193;</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 22px;border-radius:12px;background:linear-gradient(160deg,#EBF4FF,#fff);border:1px solid rgba(0,91,172,.18);box-shadow:0 2px 12px rgba(0,91,172,.08);text-align:center">
+          <div style="font-size:18px;font-weight:700;color:var(--brand);margin-bottom:5px">Agent 应用层</div>
+          <div style="font-size:13.5px;color:var(--ink2);line-height:1.65">发仔 · 智能客服 · 对话助手<br>Skill 组合编排 · Tool 调用</div>
+        </div>
+        <div style="font-size:16px;color:var(--brand);line-height:1;margin:4px 0;text-align:center">&#x2193;</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 22px;border-radius:12px;background:linear-gradient(160deg,#FFF7ED,#fff);border:1px solid rgba(255,107,53,.18);box-shadow:0 2px 12px rgba(255,107,53,.08);text-align:center">
+          <div style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:5px">平台管理与运营层</div>
+          <div style="font-size:13.5px;color:var(--ink2);line-height:1.65">知识库 · APPKEY · 质量评估<br>用户权限 · H5 集成 · 运维监控</div>
+        </div>
+        <div style="font-size:16px;color:var(--accent);line-height:1;margin:4px 0;text-align:center">&#x2193;</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 22px;border-radius:12px;background:linear-gradient(160deg,#ECFDF5,#fff);border:1px solid rgba(16,185,129,.18);box-shadow:0 2px 12px rgba(16,185,129,.08);text-align:center">
+          <div style="font-size:18px;font-weight:700;color:var(--green);margin-bottom:5px">内核 AI 能力层</div>
+          <div style="font-size:13.5px;color:var(--ink2);line-height:1.65">LLM · 记忆 · RAG · ETL · MCP · ToolCall · 编排</div>
+        </div>
+        <div style="font-size:16px;color:var(--green);line-height:1;margin:4px 0;text-align:center">&#x2193;</div>
+        <div style="width:100%;padding:11px 18px;border-radius:10px;background:linear-gradient(135deg,#F0F4F8,#E8EDF2);border:1px solid rgba(0,91,172,.12);text-align:center;font-size:14px;color:var(--ink2)">云服务：LLM / Embedding / Rerank + 基础设施</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>6 / 26</span></div>
+</div>
+
+<!-- ════════ P7 能力全景 ════════ -->
+<div class="slide" data-index="6">
+  <div class="blob blob-orange" style="width:270px;height:270px;bottom:-60px;left:30%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">2 / 3　能力从哪来</span></div>
+    <div class="sec-title">通联智多星能力全景</div>
+    <div class="sec-sub">懂业务 · 有数据 · 能办事 —— 三大能力板块一一对应</div>
+    <div class="three-col" style="align-items:stretch;gap:18px">
+      <div style="padding:18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-l));display:grid;place-items:center;font-size:22px">&#x1f4da;</div>
+        <h3 style="font-size:20px;font-weight:700;color:var(--brand)">统一知识库底座</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.8;flex:1">基于三级知识库体系构建统一知识基座<br>已收录大量通联各部门与业务系统知识<br>打通文档中心，真正教会 AI 通联的业务<br><strong style="color:var(--brand)">所有能力均生长在同一底座之上</strong></div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">三级知识库</span><span class="mchip mchip-blue">打通文档中心</span></div>
+      </div>
+      <div style="padding:18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--accent-l),#fff);border:1px solid rgba(255,107,53,.15);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#FF9F6B);display:grid;place-items:center;font-size:22px">&#x1f4ca;</div>
+        <h3 style="font-size:20px;font-weight:700;color:var(--accent)">业务系统全贯通</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.8;flex:1">底座直连收银宝 / 收付通 / 统一客户<br>交易诊断、结算查询、风控信息一键获取<br>对内 33 个接口 · 对外 10 个接口<br><strong style="color:var(--accent)">一个入口调用全部业务系统数据</strong></div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-orange">交易诊断</span><span class="mchip mchip-orange">结算查询</span></div>
+      </div>
+      <div style="padding:18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--green-l),#fff);border:1px solid rgba(16,185,129,.15);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--green),#34D399);display:grid;place-items:center;font-size:22px">&#x1f3af;</div>
+        <h3 style="font-size:20px;font-weight:700;color:var(--green)">操作辅助</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.8;flex:1">排查业务系统问题，给出分步指引<br>引导商户在好老板 APP 自助改卡、更新证件<br>系统报错排查与处理建议</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-green">分步指引</span><span class="mchip mchip-green">自助办理</span></div>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:12px;padding:9px 14px;font-size:14px;align-items:center">
+      <span style="font-size:18px;margin-right:3px">&#x1f3d7;</span> <strong>统一底座：</strong>知识、数据、操作三大能力生长在同一个平台上——它只查不改、不编答案、不替人做决策。
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>7 / 26</span></div>
+</div>
+
+<!-- ════════ P8 智能体工厂：知识供给 ════════ -->
+<div class="slide" data-index="7">
+  <div class="blob blob-blue" style="width:270px;height:270px;top:-70px;left:35%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">3 / 3　智能体工厂</span></div>
+    <div class="sec-title">智能体工厂 · 知识供给能力</div>
+    <div class="sec-sub">工厂的第一道工序：把通联的知识，喂给 AI</div>
+    <div style="display:flex;gap:22px;flex:1;min-height:0;align-items:stretch">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+        <div style="width:78%;padding:13px 18px;border-radius:10px;background:linear-gradient(160deg,#EBF4FF,#fff);border:1px solid rgba(0,91,172,.18);text-align:center;box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--brand)">公共知识库</div>
+          <div style="font-size:13px;color:var(--ink2)">公司管理员维护 · 全公司可见</div>
+        </div>
+        <div style="font-size:16px;color:var(--brand)">&#x2193;</div>
+        <div style="width:88%;padding:13px 18px;border-radius:10px;background:linear-gradient(160deg,#EBF4FF,#fff);border:1px solid rgba(0,91,172,.18);text-align:center;box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--brand)">部门知识库</div>
+          <div style="font-size:13px;color:var(--ink2)">分公司 / 部门自行维护 · 部门内可见</div>
+        </div>
+        <div style="font-size:16px;color:var(--brand)">&#x2193;</div>
+        <div style="width:98%;padding:13px 18px;border-radius:10px;background:linear-gradient(160deg,#EBF4FF,#fff);border:1px solid rgba(0,91,172,.18);text-align:center;box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--brand)">个人知识库</div>
+          <div style="font-size:13px;color:var(--ink2)">个人常用资料 · 仅本人可见</div>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center">
+        <div style="padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+          <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px">&#x1f4e4; 三种录入方式</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink2)">
+            <div>&#x2022; 建知识分组</div><div>&#x2022; 上传知识文件</div><div>&#x2022; URL 抓取（文档中心）</div>
+          </div>
+        </div>
+        <div class="ph">
+          <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+          <div class="ph-b">三级知识库的分级口径与权限说明 / 贵州分公司可自主维护的层级 / 知识录入后的生效时间 / 是否需要配 kb_create_group、kb_upload_file、kb_url_grab 三张截图</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>8 / 26</span></div>
+</div>
+
+<!-- ════════ P9 智能体工厂：数据调用 ════════ -->
+<div class="slide" data-index="8">
+  <div class="blob blob-orange" style="width:270px;height:270px;bottom:-70px;right:20%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">3 / 3　智能体工厂</span></div>
+    <div class="sec-title">智能体工厂 · 数据调用能力</div>
+    <div class="sec-sub">工厂的第二道工序：把业务系统的数据，接到 AI 上</div>
+    <div style="display:flex;gap:20px;flex:1;min-height:0;align-items:stretch">
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+        <div style="padding:15px 18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--accent-l),#fff);border:1px solid rgba(255,107,53,.15);box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--accent);margin-bottom:7px">&#x1f517; 直连的业务系统</div>
+          <div style="font-size:14px;color:var(--ink2);line-height:1.8">收银宝 · 收付通 · 统一客户<br>交易诊断、结算查询、风控信息一键获取</div>
+        </div>
+        <div style="padding:15px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--ink);margin-bottom:7px">&#x1f4ca; 接口规模</div>
+          <div style="font-size:14px;color:var(--ink2);line-height:1.8">对内 33 个接口 · 对外 10 个接口<br>11 类查询维度</div>
+        </div>
+        <div class="ph">
+          <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+          <div class="ph-b">11 类查询维度的具体清单 / 贵州分公司高频查询场景 / 数据权限与脱敏口径</div>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+        <div style="padding:15px 18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow);flex:1">
+          <div style="font-size:17px;font-weight:700;color:var(--brand);margin-bottom:9px">&#x1f5a5;&#xfe0f; 一次提问，背后发生了什么</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0">1</span><span style="font-size:14px;color:var(--ink2)">发仔接到问题，判断意图</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0">2</span><span style="font-size:14px;color:var(--ink2)">底座检索知识库，取通联业务口径</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0">3</span><span style="font-size:14px;color:var(--ink2)">调用业务接口，取实时数据</span></div>
+            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0">4</span><span style="font-size:14px;color:var(--ink2)">组织答案返回，附数据来源与操作指引</span></div>
+          </div>
+        </div>
+        <div class="tip tip-warn" style="padding:9px 14px;font-size:13px">
+          <span style="font-size:16px">&#x26a0;&#xfe0f;</span> <strong>只查不改：</strong>底座仅做查询与指引，不代客操作、不修改业务数据。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>9 / 26</span></div>
+</div>
+
+<!-- ════════ P10 三大初始智能体 ════════ -->
+<div class="slide" data-index="9">
+  <div class="blob blob-orange" style="width:270px;height:270px;top:-60px;left:40%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip">阶段一 · 演示前铺垫</span><span class="stage-note">3 / 3　工厂已产出</span></div>
+    <div class="sec-title">智能体工厂已产出 · 三大初始智能体</div>
+    <div class="sec-sub">覆盖对内、对外、商户接入三类场景；下一阶段将按角色打包成场景方案</div>
+    <div class="three-col" style="align-items:stretch;gap:18px">
+      <div style="padding:20px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px">
+        <div style="font-size:40px">&#x1f3e2;</div>
+        <h3 style="font-size:21px;font-weight:700">通联智枢</h3>
+        <div style="font-size:13px;color:var(--mut)">对内 · 公司员工</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7;text-align:left;flex:1">知识问答 · 业务数据查询 · 问题排查指引<br>三级知识库 + 全业务系统数据打通</div>
+        <div class="chips-row" style="justify-content:center"><span class="mchip mchip-blue">知识问答</span><span class="mchip mchip-blue">数据查询</span></div>
+      </div>
+      <div style="padding:20px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px">
+        <div style="font-size:40px">&#x1f4b0;</div>
+        <h3 style="font-size:21px;font-weight:700">智慧经营</h3>
+        <div style="font-size:13px;color:var(--mut)">对外 · 商户服务</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7;text-align:left;flex:1">经营分析 · 资料变更 · 日常查询 · 智能建议<br>全渠道多触点触达商户</div>
+        <div class="chips-row" style="justify-content:center"><span class="mchip mchip-green">经营分析</span><span class="mchip mchip-green">智能建议</span></div>
+      </div>
+      <div style="padding:20px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px">
+        <div style="font-size:40px">&#x1f527;</div>
+        <h3 style="font-size:21px;font-weight:700">研发智擎</h3>
+        <div style="font-size:13px;color:var(--mut)">商户接入 · 技术赋能</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7;text-align:left;flex:1">AI 技能包 · 接口对接指引 · 报错排查<br>把接入经验沉淀为可复用技能</div>
+        <div class="chips-row" style="justify-content:center"><span class="mchip mchip-orange">AI 技能包</span><span class="mchip mchip-orange">接入指引</span></div>
+      </div>
+    </div>
+    <div class="ph" style="margin-top:12px">
+      <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+      <div class="ph-b">三大智能体与四个角色的对应关系是否需要在此页点明 / 是否需要保留广东版三张功能截图（agent_zhishu_func、agent_jingying_func、three_agents_overview）</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段一 · 平台认知与底座铺垫</span><span>10 / 26</span></div>
+</div>
+
+<!-- ════════ P11 分隔页 PART 02 ════════ -->
+<div class="slide" data-index="10">
+  <div class="divider-bg"></div>
+  <div style="position:absolute;inset:0;z-index:0;opacity:.05;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:27px 27px"></div>
+  <div class="divider-content">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <div style="width:36px;height:3px;border-radius:1.5px;background:var(--accent)"></div>
+      <span style="color:rgba(255,255,255,.6);font-size:18px;letter-spacing:2px">PART 02</span>
+    </div>
+    <h2 style="font-size:56px;font-weight:800;color:#fff;margin-bottom:12px">按角色的场景方案</h2>
+    <p style="font-size:22px;color:rgba(255,255,255,.7);margin-bottom:33px">不讲原子功能，只讲「你这个岗位，发仔能帮你做什么」</p>
+    <div class="divider-chips">
+    <div class="divider-chip">运营支持官</div>
+    <div class="divider-chip">接入技术官</div>
+    <div class="divider-chip">市场拓展官</div>
+    <div class="divider-chip">商户服务官</div>
+    <div class="divider-chip">商户经营官</div>
+    <div class="divider-chip">风控合规官</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ P12 角色总览 ════════ -->
+<div class="slide" data-index="11">
+  <div class="blob blob-blue" style="width:300px;height:300px;bottom:-80px;right:-60px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色导航</span></div>
+    <div class="sec-title">6 个核心角色 + 1 个支撑角色</div>
+    <div class="sec-sub">同一套底座能力，按「谁在用 · 解决什么问题」重新打包成岗位 Agent</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:13px;flex:1;min-height:0">
+      <div class="role-card" style="border-top-color:var(--brand)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="rnum" style="background:linear-gradient(135deg,var(--brand),var(--brand-l))">01</div>
+          <span class="badge badge-blue">P0 首批</span>
+        </div>
+        <h3>运营支持官</h3>
+        <div class="desc">商户问题「一句话查清、一次说透」<br>排查 · 取数 · 全景画像</div>
+        <div><span class="kchip">对内</span><span class="kchip">只读</span></div>
+      </div>
+      <div class="role-card" style="border-top-color:var(--green)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="rnum" style="background:linear-gradient(135deg,var(--green),#34D399)">02</div>
+          <span class="badge badge-blue">P0 首批</span>
+        </div>
+        <h3>接入技术官</h3>
+        <div class="desc">联调排障第一响应人<br>日志 · 报文 · 渠道报备</div>
+        <div><span class="kchip kchip-g">对内+对外</span></div>
+      </div>
+      <div class="role-card" style="border-top-color:var(--fz)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="rnum" style="background:linear-gradient(135deg,var(--fz),#F87171)">03</div>
+          <span class="badge badge-blue">P0 首批</span>
+        </div>
+        <h3>商户服务官</h3>
+        <div class="desc">发仔 · 智能客服<br>到账 · 结算 · 套餐自助答</div>
+        <div><span class="kchip kchip-r">对外</span><span class="kchip kchip-r">7&times;24</span></div>
+      </div>
+      <div class="role-card" style="border-top-color:var(--accent)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="rnum" style="background:linear-gradient(135deg,var(--accent),#FF9F6B)">04</div>
+          <span class="badge badge-orange">P1</span>
+        </div>
+        <h3>市场拓展官</h3>
+        <div class="desc">展业军师：懂产品、懂竞品、会报价<br>推荐 · 话术 · 方案</div>
+        <div><span class="kchip kchip-o">对内</span></div>
+      </div>
+      <div class="role-card" style="border-top-color:var(--accent)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="rnum" style="background:linear-gradient(135deg,var(--accent),#FF9F6B)">05</div>
+          <span class="badge badge-orange">P1</span>
+        </div>
+        <h3>商户经营官</h3>
+        <div class="desc">生意参谋：会看账、会算账、会给建议<br>经营报告 · 套餐测算</div>
+        <div><span class="kchip kchip-o">对外</span></div>
+      </div>
+      <div class="role-card" style="border-top-color:var(--red)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="rnum" style="background:linear-gradient(135deg,var(--red),#F87171)">06</div>
+          <span class="badge badge-orange">P1</span>
+        </div>
+        <h3>风控合规官</h3>
+        <div class="desc">风险扫描雷达<br>限额 · 合规 · 异常经营</div>
+        <div><span class="kchip">对内 · 高敏</span></div>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:10px">
+      <span>&#x1f9f1;</span>
+      <div><strong>支撑角色 07 · 知识运营官</strong>：管入库、管质量、管更新 —— 是前 6 个角色的「弹药供给」。不直接面向业务，却决定其他角色能答多准。（P2，建议与 P0 同步启动知识入库冲刺）</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>12 / 26</span></div>
+</div>
+
+<!-- ════════ P13 角色是怎么装配出来的 ════════ -->
+<div class="slide" data-index="12">
+  <div class="blob blob-orange" style="width:280px;height:280px;top:-80px;right:-60px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">装配机制</span></div>
+    <div class="sec-title">角色是怎么装配出来的</div>
+    <div class="sec-sub">角色不是新功能，而是「已有能力 &times; 岗位场景 &times; 权限边界」的重新组合</div>
+    <div class="formula" style="margin-bottom:12px">
+      <span class="fbox" style="background:var(--brand-xl);color:var(--brand)">能力单元</span>
+      <span class="op">+</span>
+      <span class="fbox" style="background:var(--accent-l);color:var(--accent)">岗位场景</span>
+      <span class="op">+</span>
+      <span class="fbox" style="background:var(--green-l);color:var(--green)">权限边界</span>
+      <span class="op">+</span>
+      <span class="fbox" style="background:var(--fz-l);color:var(--fz)">话术与工作流</span>
+      <span class="op">=</span>
+      <span class="fbox" style="background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff">一个角色 Agent</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:11px;flex:1;min-height:0">
+      <div class="cap-block" style="border-top:2px solid var(--brand)">
+        <div class="ct">&#x1f4da; K 知识供给</div>
+        <div class="cb">公共 / 部门 / 个人三级知识库<br>文档上传 · URL 抓取 · 引用溯源</div>
+      </div>
+      <div class="cap-block" style="border-top:2px solid var(--brand-l)">
+        <div class="ct">&#x1f4ca; S 收付通数据</div>
+        <div class="cb">商户档案 · 风控限额 · 余额结算<br>交易查询/统计 · 诊断 · 联调日志</div>
+      </div>
+      <div class="cap-block" style="border-top:2px solid var(--green)">
+        <div class="ct">&#x1f4b3; Y 收银宝数据</div>
+        <div class="cb">商户/门店/终端 · 渠道报备 · 合规合同<br>套餐补贴 · 交易统计 · 卡 bin</div>
+      </div>
+      <div class="cap-block" style="border-top:2px solid var(--fz)">
+        <div class="ct">&#x1f6d2; O 商户侧数据</div>
+        <div class="cb">对外上下文透传：余额 · 结算 · 秒到<br>交易详情 · 经营报告 · 套餐余量</div>
+      </div>
+      <div class="cap-block" style="border-top:2px solid var(--accent)">
+        <div class="ct">&#x2728; G 生成 / P 平台</div>
+        <div class="cb">文案润色 · 经营报告 · 风险报告<br>多端入口 · MCP 接入 · 权限审计</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+      <div style="padding:12px 15px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="font-size:15px;font-weight:700;color:var(--brand);margin-bottom:6px">&#x1f501; 一条提问，多能力自动编排</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.7">「商户说钱没到账」&rarr; 结算记录 &rarr; 交易详情 &rarr; 秒到记录 &rarr; 结算配置 &rarr; 知识库规则，一次给出结论，不用逐个系统翻。</div>
+      </div>
+      <div style="padding:12px 15px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="font-size:15px;font-weight:700;color:var(--accent);margin-bottom:6px">&#x1f6e1; 铁律：只取数，分析在本地</div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.7">角色负责「问清楚 + 取准数」；计算、趋势判断、风险分级由本地分析引擎完成 —— 口径可复核、结论可追溯。</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>13 / 26</span></div>
+</div>
+
+<!-- ════════ P14 角色一 · 分公司运营 ════════ -->
+<div class="slide" data-index="13">
+  <div class="blob blob-blue" style="width:280px;height:280px;top:-70px;left:38%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色 01 / 06</span></div>
+    <div class="sec-title">角色一 · 运营支持官</div>
+    <div class="sec-sub">把「翻 5 个系统、问 3 个人」压缩成「一句话」</div>
+    <div class="role-hero">
+      <div style="flex:1">
+        <div class="rname">运营支持官</div>
+        <div class="rtag">Ops-Copilot &middot; 分公司运营 / 客服支撑 &middot; 企业微信 &amp; PC 网页</div>
+        <div class="rline">最高频的三件事：商户说没到账、这笔交易为什么失败、这个商户到底什么情况 —— 一次问清。</div>
+      </div>
+      <div style="text-align:right"><span class="badge badge-blue">P0 首批</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--brand)">&#x1f4ac; 典型问法 &rarr; 自动编排 &rarr; 给结论</div>
+        <div class="qa-row"><span class="q">Q1</span><span>「XX 商户说钱没到账」&rarr; 结算记录 + 交易详情 + 秒到记录 &rarr; 已到账 / 在途 / 失败原因</span></div>
+        <div class="qa-row"><span class="q">Q2</span><span>「这笔交易为什么失败」&rarr; 交易详情 + 单笔诊断 &rarr; 失败原因归类 + 处置建议</span></div>
+        <div class="qa-row"><span class="q">Q3</span><span>「帮我看看这个商户整体情况」&rarr; 商户综合分析 &rarr; 一屏画像（产品 / 近期交易 / 收益）</span></div>
+        <div class="qa-row"><span class="q">Q4</span><span>「这个码牌是哪个商户的」&rarr; 收款码牌反查 &rarr; 商户号 + 门店</span></div>
+        <div class="qa-row"><span class="q">Q5</span><span>「结算规则是什么 / 这个产品怎么开通」&rarr; 知识库问答（带出处，可点开原文）</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="cap-block">
+          <div class="ct">&#x1f4da; 知识能力 + 生成</div>
+          <div class="cb"><span class="kchip">公共知识库</span><span class="kchip">部门知识库</span><span class="kchip">引用溯源</span><br><span class="kchip kchip-o">单商户诊断报告</span><span class="kchip kchip-o">话术 / FAQ</span></div>
+        </div>
+        <div class="cap-block">
+          <div class="ct">&#x1f4ca; 数据能力（收付通 + 收银宝）</div>
+          <div class="cb"><span class="kchip">商户档案</span><span class="kchip">余额/历史余额</span><span class="kchip">结算记录</span><span class="kchip">交易查询</span><span class="kchip">交易诊断</span><span class="kchip">交易统计</span><span class="kchip">综合分析</span><span class="kchip">终端/码牌</span><span class="kchip">套餐补贴</span></div>
+        </div>
+        <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--red-l);border:1px solid rgba(239,68,68,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:4px">&#x26d4; 边界</div>
+          <div style="font-size:12.5px;color:#7F1D1D;line-height:1.65">只读不写、不改任何配置；不做风控定性（转风控合规官）；单次结算/余额查询 &le;15 天。</div>
+        </div>
+      </div>
+    </div>
+    <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">成效：单问题处理时长 &darr;</span><span class="mchip mchip-blue">一次解决率 &uarr;</span><span class="mchip mchip-blue">人工转派率 &darr;</span></div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>14 / 26</span></div>
+</div>
+
+<!-- ════════ P15 角色二 · 分公司市场 ════════ -->
+<div class="slide" data-index="14">
+  <div class="blob blob-orange" style="width:280px;height:280px;bottom:-80px;right:15%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色 02 / 06</span></div>
+    <div class="sec-title">角色二 · 接入技术官</div>
+    <div class="sec-sub">把报文甩给发仔，就能看出问题在哪</div>
+    <div class="role-hero" style="background:linear-gradient(120deg,var(--green-l),#fff);border-color:rgba(16,185,129,.18)">
+      <div style="flex:1">
+        <div class="rname" style="color:var(--green)">接入技术官</div>
+        <div class="rtag" style="color:#059669">Tech-Copilot &middot; 技术对接 / 开发 / 实施 &middot; 对内 + 对外</div>
+        <div class="rline">商户与渠道接入、联调排障的第一响应人：日志、报文、错误码、渠道报备、接口文档，一个入口全打通。</div>
+      </div>
+      <div style="text-align:right"><span class="badge badge-blue">P0 首批</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--green)">&#x1f4ac; 典型问法 &rarr; 自动编排 &rarr; 给结论</div>
+        <div class="qa-row"><span class="q">Q1</span><span>「回调没收到」&rarr; 联调日志（通知侧）&rarr; 是否发出、响应码、失败点</span></div>
+        <div class="qa-row"><span class="q">Q2</span><span>「这单报 ERxxx 是什么意思」&rarr; 日志 + 知识库错误码 &rarr; 原因 + 修改建议</span></div>
+        <div class="qa-row"><span class="q">Q3</span><span>「这个渠道报备到哪一步了」&rarr; 渠道配置 &rarr; 报备状态 / 渠道商户号 / 认证状态 / 微信参数</span></div>
+        <div class="qa-row"><span class="q">Q4</span><span>「这张卡哪家银行、贷记还是借记」&rarr; 卡 bin 查询 &rarr; 发卡行 + 账户类别</span></div>
+        <div class="qa-row"><span class="q">Q5</span><span>「我要接入，给我流程和示例」&rarr; 接入文档 + 样例报文 + 常见坑</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="cap-block" style="border-color:rgba(16,185,129,.25)">
+          <div class="ct" style="color:#059669">&#x1f4ca; 数据能力（核心）</div>
+          <div class="cb"><span class="kchip kchip-g">联调日志/原始报文</span><span class="kchip kchip-g">交易详情</span><span class="kchip kchip-g">交易诊断</span><span class="kchip kchip-g">渠道报备</span><span class="kchip kchip-g">卡 bin</span><span class="kchip kchip-g">终端查询</span></div>
+        </div>
+        <div class="cap-block" style="border-color:rgba(16,185,129,.25)">
+          <div class="ct" style="color:#059669">&#x1f4da; 知识能力 + 生成 / 生态</div>
+          <div class="cb"><span class="kchip">接口文档</span><span class="kchip">错误码</span><span class="kchip">接入 SOP</span><span class="kchip">引用溯源</span><br><span class="kchip kchip-o">排障结论模板</span><span class="kchip kchip-o">接口示例</span><span class="kchip kchip-o">MCP 开放接入</span></div>
+        </div>
+        <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--red-l);border:1px solid rgba(239,68,68,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:4px">&#x26d4; 边界</div>
+          <div style="font-size:12.5px;color:#7F1D1D;line-height:1.65">只给证据与建议，不下「系统故障」定性；报文敏感字段脱敏；对外仅查本商户上下文；不改生产配置。</div>
+        </div>
+      </div>
+    </div>
+    <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-green">成效：排障首响时间 &darr;</span><span class="mchip mchip-green">重复提问 &darr;</span><span class="mchip mchip-green">接入周期 &darr;</span></div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>15 / 26</span></div>
+</div>
+
+<!-- ════════ P16 角色三 · 技术对接 ════════ -->
+<div class="slide" data-index="15">
+  <div class="blob blob-blue" style="width:270px;height:270px;top:-70px;right:20%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色 03 / 06</span></div>
+    <div class="sec-title">角色三 · 市场拓展官</div>
+    <div class="sec-sub">从拜访准备到经营分析，一条链路全打包</div>
+    <div class="role-hero" style="background:linear-gradient(120deg,var(--accent-l),#fff);border-color:rgba(255,107,53,.18)">
+      <div style="flex:1">
+        <div class="rname" style="color:var(--accent)">市场拓展官</div>
+        <div class="rtag" style="color:#C2410C">Sales-Copilot &middot; 市场 / 销售 / 拓展 &middot; 企业微信</div>
+        <div class="rline">懂产品、懂竞品、会报价、会写方案 —— 拜访前查背景，拜访中讲方案，拜访后出报告。</div>
+      </div>
+      <div style="text-align:right"><span class="badge badge-orange">P1</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--accent)">&#x1f4ac; 典型问法 &rarr; 自动编排 &rarr; 给结论</div>
+        <div class="qa-row"><span class="q">Q1</span><span>「这个客户适合什么产品」&rarr; 客户背景 + 产品适配知识 &rarr; 推荐 2~3 个产品 + 理由 + 费率区间</span></div>
+        <div class="qa-row"><span class="q">Q2</span><span>「入网要什么材料」&rarr; 知识库 &rarr; 材料清单 + 常见驳回点（带出处）</span></div>
+        <div class="qa-row"><span class="q">Q3</span><span>「XX 竞品和我们比怎么样」&rarr; 竞品知识 &rarr; 对比表（公开信息 + 我司优势）</span></div>
+        <div class="qa-row"><span class="q">Q4</span><span>「这个存量商户还有提升空间吗」&rarr; 商户综合分析 &rarr; 增量机会点</span></div>
+        <div class="qa-row"><span class="q">Q5</span><span>「帮我写段拜访开场白 / 群公告」&rarr; 文案生成 &rarr; 成稿</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="cap-block" style="border-color:rgba(255,107,53,.25)">
+          <div class="ct" style="color:#C2410C">&#x1f4da; 知识能力（主营）+ 生成</div>
+          <div class="cb"><span class="kchip kchip-o">产品手册</span><span class="kchip kchip-o">费率政策</span><span class="kchip kchip-o">入网资料</span><span class="kchip kchip-o">分公司政策</span><span class="kchip kchip-o">个人客户档案</span><br><span class="kchip kchip-o">宣传文案</span><span class="kchip kchip-o">方案 / 话术</span><span class="kchip kchip-o">竞品对比</span></div>
+        </div>
+        <div class="cap-block" style="border-color:rgba(255,107,53,.25)">
+          <div class="ct" style="color:#C2410C">&#x1f4ca; 数据能力</div>
+          <div class="cb"><span class="kchip">按名称查商户</span><span class="kchip">商户综合分析</span><span class="kchip">营销活动</span><span class="kchip">套餐/补贴</span><span class="kchip">风控限额</span></div>
+        </div>
+        <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--red-l);border:1px solid rgba(239,68,68,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:4px">&#x26d4; 边界</div>
+          <div style="font-size:12.5px;color:#7F1D1D;line-height:1.65">不给未审批的费率承诺、不做违规补贴宣传；不得批量导出商户清单；对外材料须过合规口径。</div>
+        </div>
+      </div>
+    </div>
+    <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-orange">成效：方案产出时间 &darr;</span><span class="mchip mchip-orange">新人上手周期 &darr;</span><span class="mchip mchip-orange">拜访转化率 &uarr;</span></div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>16 / 26</span></div>
+</div>
+
+<!-- ════════ P17 角色四 · 商户侧 ════════ -->
+<div class="slide" data-index="16">
+  <div class="blob blob-orange" style="width:270px;height:270px;bottom:-80px;left:25%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色 04 / 06</span></div>
+    <div class="sec-title">角色四 · 商户服务官</div>
+    <div class="sec-sub">发仔 · 智能客服 —— 商户的「我的钱、我的单、我的套餐」</div>
+    <div class="role-hero" style="background:linear-gradient(120deg,var(--fz-l),#fff);border-color:rgba(228,57,60,.18)">
+      <div style="flex:1">
+        <div class="rname" style="color:var(--fz)">商户服务官</div>
+        <div class="rtag" style="color:var(--fz-d)">发仔 &middot; 智能客服 &middot; 好老板 APP / H5 / QQ 群机器人</div>
+        <div class="rline">7&times;24 自助答复，上下文透传只认「本商户自己」的数据，说人话、不抛字段名。</div>
+      </div>
+      <div style="text-align:right"><span class="badge badge-blue">P0 首批</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--fz)">&#x1f4ac; 典型问法 &rarr; 自动编排 &rarr; 给结论</div>
+        <div class="qa-row"><span class="q">Q1</span><span>「钱到账了吗」&rarr; 结算记录 / 秒到记录 &rarr; 已到账 / 处理中 / 失败原因</span></div>
+        <div class="qa-row"><span class="q">Q2</span><span>「这笔手续费怎么没走套餐」&rarr; 套餐余量 + 交易详情 &rarr; 套餐类型 / 有效期 / 适用产品 / 额度 逐项核对</span></div>
+        <div class="qa-row"><span class="q">Q3</span><span>「为什么没实时到账」&rarr; 结算配置（是否开通秒到）+ 结算记录</span></div>
+        <div class="qa-row"><span class="q">Q4</span><span>「我的码牌 / 终端什么状态」&rarr; 终端查询 &rarr; 设备清单与状态</span></div>
+        <div class="qa-row"><span class="q">Q5</span><span>「这个月生意怎么样」&rarr; 经营报告（简版 &rarr; 需要时转商户经营官）</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="cap-block" style="border-color:rgba(228,57,60,.25)">
+          <div class="ct" style="color:var(--fz)">&#x1f6d2; 数据能力（全部对外 · 上下文透传）</div>
+          <div class="cb"><span class="kchip kchip-r">余额/历史余额</span><span class="kchip kchip-r">结算记录</span><span class="kchip kchip-r">秒到记录</span><span class="kchip kchip-r">交易详情</span><span class="kchip kchip-r">交易统计</span><span class="kchip kchip-r">套餐余量</span><span class="kchip kchip-r">结算配置</span><span class="kchip kchip-r">终端</span></div>
+        </div>
+        <div class="cap-block" style="border-color:rgba(228,57,60,.25)">
+          <div class="ct" style="color:var(--fz)">&#x1f4da; 知识能力</div>
+          <div class="cb"><span class="kchip">商户自助指南</span><span class="kchip">常见问题</span><span class="kchip">自助变更</span></div>
+        </div>
+        <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--red-l);border:1px solid rgba(239,68,68,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:4px">&#x26d4; 边界</div>
+          <div style="font-size:12.5px;color:#7F1D1D;line-height:1.65">只能看登录商户自己的数据；不展示内部成本与风控参数；不承诺赔付/时效；争议转人工并附已取数据。</div>
+        </div>
+      </div>
+    </div>
+    <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-red">成效：客服工单量 &darr;</span><span class="mchip mchip-red">自助解决率 &uarr;</span><span class="mchip mchip-red">重复询问 &darr;</span></div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>17 / 26</span></div>
+</div>
+
+<!-- ════════ P18 角色五 · 商户经营官 ════════ -->
+<div class="slide" data-index="17">
+  <div class="blob blob-orange" style="width:270px;height:270px;bottom:-80px;left:25%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色 05 / 06</span></div>
+    <div class="sec-title">角色五 · 商户经营官</div>
+    <div class="sec-sub">生意参谋 —— 会看账、会算账、会给建议</div>
+    <div class="role-hero" style="background:linear-gradient(120deg,var(--accent-l),#fff);border-color:rgba(255,107,53,.18)">
+      <div style="flex:1">
+        <div class="rname" style="color:var(--accent)">商户经营官</div>
+        <div class="rtag" style="color:#C2410C">Biz-Advisor &middot; 商户老板 / 店长 &middot; 好老板 APP</div>
+        <div class="rline">把交易数据翻译成经营动作：哪里掉量、套餐够用多久、要不要上新品、促销语怎么写。</div>
+      </div>
+      <div style="text-align:right"><span class="badge badge-orange">P1</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:15px;font-weight:700;color:var(--accent)">&#x1f4ac; 典型问法 &rarr; 自动编排 &rarr; 给结论</div>
+        <div class="qa-row"><span class="q">Q1</span><span>「本月经营报告」&rarr; 经营报告 &rarr; 笔数 / 金额 / 成功率 / 时段分布 + 三条可执行建议</span></div>
+        <div class="qa-row"><span class="q">Q2</span><span>「哪天 / 哪个门店掉量了」&rarr; 门店 / 终端维度统计 &rarr; 定位下滑点 + 原因假设</span></div>
+        <div class="qa-row"><span class="q">Q3</span><span>「套餐还剩多少，够用到月底吗」&rarr; 套餐余量 + 近 15 天消耗 &rarr; 测算可用天数</span></div>
+        <div class="qa-row"><span class="q">Q4</span><span>「帮我写个促销语播报到云音箱」&rarr; 文案生成 &rarr; 成稿 + 配置播报</span></div>
+        <div class="qa-row"><span class="q">Q5</span><span>「要不要上 XX 产品」&rarr; 产品知识 + 本商户交易结构 &rarr; 适配性建议与收益测算</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="cap-block" style="border-color:rgba(255,107,53,.25)">
+          <div class="ct" style="color:#C2410C">&#x1f6d2; 数据能力（对外）</div>
+          <div class="cb"><span class="kchip kchip-o">经营报告</span><span class="kchip kchip-o">交易统计（门店/终端）</span><span class="kchip kchip-o">余额趋势</span><span class="kchip kchip-o">套餐余量</span><span class="kchip kchip-o">营销活动</span></div>
+        </div>
+        <div class="cap-block" style="border-color:rgba(255,107,53,.25)">
+          <div class="ct" style="color:#C2410C">&#x2728; 生成能力</div>
+          <div class="cb"><span class="kchip kchip-o">经营诊断报告（含图表）</span><span class="kchip kchip-o">营销文案 / 音箱播报</span></div>
+        </div>
+        <div style="padding:8px 12px;border-radius:var(--radius-sm);background:var(--red-l);border:1px solid rgba(239,68,68,.2)">
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:4px">&#x26d4; 边界</div>
+          <div style="font-size:12.5px;color:#7F1D1D;line-height:1.65">仅本商户数据；建议须标注「基于近 N 天数据测算」；不提供竞品商户对标数据、不做经营保证。</div>
+        </div>
+      </div>
+    </div>
+    <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-orange">成效：商户活跃度 &uarr;</span><span class="mchip mchip-orange">回访转化 &uarr;</span><span class="mchip mchip-orange">套餐续费 &uarr;</span></div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>18 / 26</span></div>
+</div>
+
+<!-- ════════ P19 角色六 · 风控合规官 + 支撑角色 ════════ -->
+<div class="slide" data-index="18">
+  <div class="blob blob-blue" style="width:260px;height:260px;top:-80px;right:8%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">角色 06 / 06 + 支撑角色</span></div>
+    <div class="sec-title">角色六 · 风控合规官 &amp; 支撑 · 知识运营官</div>
+    <div class="sec-sub">把「人找数据」变成「数据找人」，同时让知识库持续供弹</div>
+    <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:14px;flex:1;min-height:0">
+      <div style="padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);border-left:3px solid var(--red);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:19px;font-weight:800;color:var(--red)">&#x1f6e1; 风控合规官</div>
+          <span class="badge badge-orange">P1 · 对内高敏</span>
+        </div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.7">限额、合规、异常经营的扫描雷达 —— 服务风控 / 合规 / 财务岗。</div>
+        <div class="qa-row"><span class="q">Q1</span><span>「这个商户限额设了吗」&rarr; 风控限额 &rarr; 未设限 / 超限项高亮告警</span></div>
+        <div class="qa-row"><span class="q">Q2</span><span>「合规审核到哪一步」&rarr; 合规审核 &rarr; 进度 + 卡点 + 下一步</span></div>
+        <div class="qa-row"><span class="q">Q3</span><span>「最近哪些商户异常」&rarr; 交易统计 + 批量风险扫描 &rarr; 风险清单 + 命中规则</span></div>
+        <div class="qa-row"><span class="q">Q4</span><span>「有没有倒挂 / 亏损条线」&rarr; 聚集分析 &rarr; 按拓展人 / 维护人聚类的风险条线</span></div>
+        <div>
+          <span class="kchip">风控限额</span><span class="kchip">合规审核</span><span class="kchip">交易统计</span><span class="kchip">综合分析</span><span class="kchip">余额与冻结</span><span class="kchip kchip-o">批量风险报告</span>
+        </div>
+        <div style="margin-top:auto;padding:8px 11px;border-radius:var(--radius-sm);background:var(--red-l);font-size:12.5px;color:#7F1D1D;line-height:1.6"><strong>边界：</strong>白名单 userid + 审计留痕；只出「风险线索与建议」，不下发处置动作；对外绝不可见。</div>
+      </div>
+      <div style="padding:14px 16px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.14);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:19px;font-weight:800;color:var(--brand)">&#x1f9f1; 知识运营官</div>
+          <span class="badge badge-blue">P2 · 支撑</span>
+        </div>
+        <div style="font-size:13px;color:var(--ink2);line-height:1.7">管入库、管质量、管更新 —— 决定前 6 个角色能答多准。</div>
+        <div class="qa-row"><span class="q">&#x2022;</span><span>新政策批量入库，自动生成 FAQ</span></div>
+        <div class="qa-row"><span class="q">&#x2022;</span><span>失效文档巡检与知识组权限维护</span></div>
+        <div class="qa-row"><span class="q">&#x2022;</span><span>命中率 / Badcase 归因，反哺角色优化</span></div>
+        <div class="qa-row"><span class="q">&#x2022;</span><span>按角色维护专属知识组</span></div>
+        <div>
+          <span class="kchip">文档上传 / URL 抓取</span><span class="kchip">知识组管理</span><span class="kchip">质量评估</span><span class="kchip">FAQ / 题库</span>
+        </div>
+        <div style="margin-top:auto;padding:8px 11px;border-radius:var(--radius-sm);background:var(--brand-xl);font-size:12.5px;color:var(--brand-d);line-height:1.6"><strong>提醒：</strong>涉密文件不入库；敏感内容自动拦截；知识变更留痕。</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>19 / 26</span></div>
+</div>
+
+<!-- ════════ P20 能力 × 角色 装配矩阵 ════════ -->
+<div class="slide" data-index="19">
+  <div class="blob blob-blue" style="width:280px;height:280px;bottom:-90px;right:-60px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">一张表看懂能力归属</span></div>
+    <div class="sec-title">能力 &times; 角色 装配矩阵</div>
+    <div class="sec-sub">&#x25cf; 主装配 ｜ &#x25cb; 受控可用 ｜ &mdash; 不装配：每个角色只拿到它该拿的那一份</div>
+    <table class="matrix">
+      <tr>
+        <th class="g" style="width:150px">能力单元</th>
+        <th>运营支持官</th><th>接入技术官</th><th>商户服务官</th><th>商户经营官</th><th>市场拓展官</th><th>风控合规官</th><th>知识运营官</th>
+      </tr>
+      <tr><td class="lbl">K 知识供给（三级知识库）</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td></tr>
+      <tr><td class="lbl">K4 知识入库 / 权限 / 质量</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="on">&#x25cf;</td></tr>
+      <tr><td class="lbl">S 收付通数据（对内）</td><td class="on">&#x25cf;</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td></tr>
+      <tr><td class="lbl">Y 收银宝数据（对内）</td><td class="on">&#x25cf;</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td></tr>
+      <tr><td class="lbl">O 商户侧数据（对外透传）</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td></tr>
+      <tr><td class="lbl">G1 营销文案 / 音箱播报</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td></tr>
+      <tr><td class="lbl">G2 经营 / 诊断报告</td><td class="on">&#x25cf;</td><td class="sub">&#x25cb;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td></tr>
+      <tr><td class="lbl">G3 批量风险扫描报告</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td></tr>
+      <tr><td class="lbl">G4 话术 / FAQ / 培训</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td><td class="sub">&#x25cb;</td><td class="on">&#x25cf;</td></tr>
+      <tr><td class="lbl">P1 多端入口 / P3 权限审计</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td></tr>
+      <tr><td class="lbl">P2 MCP 开放接入</td><td class="off">&mdash;</td><td class="on">&#x25cf;</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="sub">&#x25cb;</td></tr>
+    </table>
+    <div class="tip" style="margin-top:10px">
+      <span>&#x1f517;</span>
+      <div><strong>角色之间会转派</strong>：运营遇到限额疑点 &rarr; 转风控合规官；需要看报文 &rarr; 转接入技术官；商户要深度经营建议 &rarr; 转商户经营官；无法确权的争议 &rarr; 转人工工单（自动带上已取数据，不让商户重复描述）。</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>20 / 26</span></div>
+</div>
+
+<!-- ════════ P21 多端入口 ════════ -->
+<div class="slide" data-index="20">
+  <div class="blob blob-blue" style="width:290px;height:290px;top:-80px;right:-70px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">随时随地找发仔</span></div>
+    <div class="sec-title">多端入口：随时随地找发仔</div>
+    <div class="sec-sub">同一个发仔，五个入口，覆盖对内对外全部场景</div>
+    <div class="three-col" style="align-items:stretch;gap:18px">
+      <div style="padding:16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-size:18px;font-weight:700;color:var(--brand)">&#x1f5a5;&#xfe0f; PC 网页端</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7">浏览器打开 <strong>ai.allinpay.com</strong><br>企业微信扫码登录</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">对内</span></div>
+      </div>
+      <div style="padding:16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-size:18px;font-weight:700;color:var(--fz)">&#x1f4f1; 好老板 APP</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7">打开 APP → 点击<strong>发仔</strong>图标<br>智能问答 + 交易查询</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-red">商户侧</span></div>
+      </div>
+      <div style="padding:16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-size:18px;font-weight:700;color:var(--green)">&#x1f4ac; 企业微信</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7">工作台内直接进入<br>无需额外安装</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-green">对内</span></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:18px;margin-top:16px">
+      <div style="flex:1;padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="font-size:17px;font-weight:700;color:var(--accent);margin-bottom:6px">&#x1f916; QQ 群机器人</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7">群内 @发仔 提问，群里直接答，也能查数据</div>
+      </div>
+      <div style="flex:1;padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="font-size:17px;font-weight:700;color:var(--accent);margin-bottom:6px">&#x1f4f2; 微信小程序</div>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.7">扫码即用，轻量触达商户</div>
+      </div>
+    </div>
+    <div class="ph" style="margin-top:12px">
+      <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+      <div class="ph-b">各入口的开通方式与权限申请流程 / 贵州分公司当前已开通哪些入口 / 是否需要放入 qqbot_qr、miniprogram_qr 二维码</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>21 / 26</span></div>
+</div>
+
+<!-- ════════ P22 开放共创 MCP ════════ -->
+<div class="slide" data-index="21">
+  <div class="blob blob-orange" style="width:300px;height:300px;bottom:-90px;left:-70px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip stage-chip s2">阶段二 · 演示中场景</span><span class="stage-note">邀你一起共建</span></div>
+    <div class="sec-title">开放共创：MCP 接口邀约</div>
+    <div class="sec-sub">智多星不只是底座，更是一套底层生态 —— 分公司的智能应用，可以长在智多星上</div>
+    <div style="display:flex;gap:20px;flex:1;min-height:0;align-items:stretch">
+      <div style="flex:1;padding:20px 22px;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand-xl),#E8F4FD);border:1px solid rgba(0,91,172,.12);display:flex;flex-direction:column;gap:12px;justify-content:center">
+        <div style="font-size:20px;font-weight:700;color:var(--brand-d)">&#x1f310; 通过标准协议接入</div>
+        <div style="font-size:15px;color:var(--ink);line-height:1.8">分公司自建的智能应用、对接的业务系统，都可以通过 <strong>MCP 标准协议</strong> 快速接入，在智多星上统一调度、服务商户。</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink2)">
+          <div>&#x2714;&#xfe0f; 不用重复造底座，直接复用知识与数据能力</div>
+          <div>&#x2714;&#xfe0f; 接入后由发仔统一对外提供服务</div>
+          <div>&#x2714;&#xfe0f; 一次接入，多端可用</div>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+        <div style="padding:16px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px">&#x1f91d; 我们邀请分公司做什么</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--ink2)">
+            <div>1. 提场景：你最想让发仔帮你干的那件事</div>
+            <div>2. 供知识：把部门资料喂进知识库</div>
+            <div>3. 接系统：用 MCP 接入自有业务系统</div>
+          </div>
+        </div>
+        <div class="ph">
+          <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+          <div class="ph-b">MCP 接入的技术门槛与对接人 / 是否有已接入的分公司案例 / 共创的激励机制或排期</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段二 · 按角色的场景方案</span><span>22 / 26</span></div>
+</div>
+
+<!-- ════════ P23 分隔页 PART 03 ════════ -->
+<div class="slide" data-index="22">
+  <div class="divider-bg"></div>
+  <div style="position:absolute;inset:0;z-index:0;opacity:.05;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:27px 27px"></div>
+  <div class="divider-content">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <div style="width:36px;height:3px;border-radius:1.5px;background:var(--accent)"></div>
+      <span style="color:rgba(255,255,255,.6);font-size:18px;letter-spacing:2px">PART 03</span>
+    </div>
+    <h2 style="font-size:56px;font-weight:800;color:#fff;margin-bottom:12px">局限与迭代</h2>
+    <p style="font-size:22px;color:rgba(255,255,255,.7);margin-bottom:33px">先把边界讲清楚，再讲我们打算怎么补齐</p>
+    <div class="divider-chips">
+      <div class="divider-chip">现阶段局限性</div>
+      <div class="divider-chip">后续迭代计划</div>
+      <div class="divider-chip">持续共创</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ P24 现阶段局限性 ════════ -->
+<div class="slide" data-index="23">
+  <div class="blob blob-orange" style="width:280px;height:280px;top:-70px;right:-60px"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip stage-chip s3">阶段三 · 演示后局限</span><span class="stage-note">坦诚说明边界</span></div>
+    <div class="sec-title">现阶段局限性</div>
+    <div class="sec-sub">讲清「现在做不到什么」，避免后续预期落差</div>
+    <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);box-shadow:var(--shadow)">
+        <div style="width:26px;height:26px;border-radius:7px;background:var(--accent-l);color:var(--accent);display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">1</div>
+        <div><div style="font-size:17px;font-weight:700;color:var(--ink)">只查不改</div><div style="font-size:14px;color:var(--ink2);line-height:1.7">仅做查询与指引，不代客操作、不修改业务数据、不替人做决策</div></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);box-shadow:var(--shadow)">
+        <div style="width:26px;height:26px;border-radius:7px;background:var(--accent-l);color:var(--accent);display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">2</div>
+        <div><div style="font-size:17px;font-weight:700;color:var(--ink)">知识覆盖仍在补齐</div><div style="font-size:14px;color:var(--ink2);line-height:1.7">未收录进知识库的内容，AI 答不准 —— 需要各部门持续供数</div></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);box-shadow:var(--shadow)">
+        <div style="width:26px;height:26px;border-radius:7px;background:var(--accent-l);color:var(--accent);display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">3</div>
+        <div><div style="font-size:17px;font-weight:700;color:var(--ink)">角色方案仍在扩充</div><div style="font-size:14px;color:var(--ink2);line-height:1.7">6 个核心角色已就位，但更多岗位的场景与知识仍需持续补充</div></div>
+      </div>
+    </div>
+    <div class="ph" style="margin-top:12px">
+      <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+      <div class="ph-b">局限条目的最终清单（建议 3-5 条，每条附「当前替代方案」）/ 哪些局限适合在分公司场合讲 / 是否需要演示一次「答不准」的真实案例</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段三 · 局限与迭代</span><span>24 / 26</span></div>
+</div>
+
+<!-- ════════ P25 后续迭代计划 ════════ -->
+<div class="slide" data-index="24">
+  <div class="blob blob-blue" style="width:290px;height:290px;bottom:-90px;left:10%"></div>
+  <div class="content">
+    <div class="stage-head"><span class="stage-chip stage-chip s3">阶段三 · 演示后局限</span><span class="stage-note">我们打算怎么补齐</span></div>
+    <div class="sec-title">后续迭代计划</div>
+    <div class="sec-sub">边界之外，是我们的路线图 —— 也欢迎分公司提需求影响排期</div>
+    <div style="display:flex;gap:16px;flex:1;min-height:0;align-items:stretch">
+      <div style="flex:1;padding:18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;gap:9px"><span style="padding:3px 11px;border-radius:12px;background:var(--brand);color:#fff;font-size:13px;font-weight:700">近期</span></div>
+        <h3 style="font-size:19px;font-weight:700;color:var(--brand)">角色分批上线</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.8;flex:1">P0：运营支持官 / 接入技术官 / 商户服务官先行<br>P1：市场拓展官 / 商户经营官 / 风控合规官</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">角色场景</span></div>
+      </div>
+      <div style="flex:1;padding:18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--accent-l),#fff);border:1px solid rgba(255,107,53,.15);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;gap:9px"><span style="padding:3px 11px;border-radius:12px;background:var(--accent);color:#fff;font-size:13px;font-weight:700">中期</span></div>
+        <h3 style="font-size:19px;font-weight:700;color:var(--accent)">知识与数据扩容</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.8;flex:1">持续扩充知识库覆盖<br>接入更多业务系统接口</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-orange">知识扩容</span><span class="mchip mchip-orange">接口扩展</span></div>
+      </div>
+      <div style="flex:1;padding:18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--green-l),#fff);border:1px solid rgba(16,185,129,.15);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;gap:9px"><span style="padding:3px 11px;border-radius:12px;background:var(--green);color:#fff;font-size:13px;font-weight:700">长期</span></div>
+        <h3 style="font-size:19px;font-weight:700;color:var(--green)">分公司共创生态</h3>
+        <div style="font-size:14px;color:var(--ink2);line-height:1.8;flex:1">通过 MCP 开放接入<br>分公司自建应用统一调度</div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-green">MCP 生态</span></div>
+      </div>
+    </div>
+    <div class="ph" style="margin-top:12px">
+      <div class="ph-h">&#x270f;&#xfe0f; 待补充</div>
+      <div class="ph-b">各阶段的具体时间节点（Q3 / Q4 / 次年）/ 可承诺与不可承诺的内容边界 / 需求反馈渠道与对接人</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>阶段三 · 局限与迭代</span><span>25 / 26</span></div>
+</div>
+
+<!-- ════════ P26 结束页 ════════ -->
+<div class="slide" data-index="25">
+  <div class="closing-bg"></div>
+  <div style="position:absolute;inset:0;z-index:0;opacity:.04;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:30px 30px"></div>
+  <div class="closing-content">
+    <div style="width:54px;height:4px;border-radius:2px;background:var(--accent);margin-bottom:24px"></div>
+    <h2 style="font-size:48px;font-weight:800;margin-bottom:8px;line-height:1.3">感谢聆听，欢迎交流</h2>
+    <div style="font-size:21px;font-weight:700;color:var(--accent);margin-bottom:22px;letter-spacing:1px">
+      有问题，找发仔 &middot; 智多星是背后的 AI 底座
+    </div>
+    <div style="display:flex;gap:14px;margin-bottom:26px;justify-content:center">
+      <div style="padding:14px 22px;border-radius:12px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;text-align:center;min-width:150px">
+        <div style="font-size:26px;margin-bottom:5px">&#x1f464;</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:3px">体验发仔</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65)">登录直接提问</div>
+      </div>
+      <div style="padding:14px 22px;border-radius:12px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;text-align:center;min-width:150px">
+        <div style="font-size:26px;margin-bottom:5px">&#x1f517;</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:3px">接入系统</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65)">对接你的业务</div>
+      </div>
+      <div style="padding:14px 22px;border-radius:12px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;text-align:center;min-width:150px">
+        <div style="font-size:26px;margin-bottom:5px">&#x1f91d;</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:3px">共创场景</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65)">提需求 · 供知识</div>
+      </div>
+    </div>
+    <div style="font-size:44px;font-weight:800;letter-spacing:2px">谢谢大家</div>
+    <div style="margin-top:16px;display:flex;gap:13px;justify-content:center">
+      <div style="padding:9px 21px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:16px">&#x1f310;&ensp;ai.allinpay.com</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- NAVIGATION -->
+<div class="nav" id="nav">
+  <button id="prev" onclick="go(-1)">&#x2190;</button>
+  <div class="dots" id="dots"></div>
+  <span id="counter" style="min-width:36px;text-align:center;font-weight:600"></span>
+  <button id="next" onclick="go(1)">&#x2192;</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+function render() {
+  slides.forEach((s, i) => {
+    s.classList.remove('active', 'exit');
+    if (i === cur) s.classList.add('active');
+    else if (i < cur) s.classList.add('exit');
+  });
+  document.getElementById('counter').textContent = `${cur + 1} / ${total}`;
+  document.getElementById('prev').disabled = cur === 0;
+  document.getElementById('next').disabled = cur === total - 1;
+  const dots = document.getElementById('dots');
+  dots.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('span');
+    if (i === cur) d.classList.add('on');
+    d.onclick = () => { cur = i; render(); };
+    dots.appendChild(d);
+  }
+}
+
+function go(dir) {
+  const next = cur + dir;
+  if (next >= 0 && next < total) { cur = next; render(); }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); go(-1); }
+  if (e.key === 'Home') { cur = 0; render(); }
+  if (e.key === 'End') { cur = total - 1; render(); }
+});
+
+render();
+</script>
+</body>
+</html>
