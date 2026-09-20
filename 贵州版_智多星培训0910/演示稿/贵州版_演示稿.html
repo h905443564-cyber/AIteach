@@ -622,8 +622,8 @@ img[data-zoom]{cursor:zoom-in}</style>
 <div class="slide" data-index="9">
   <div class="blob blob-orange" style="width:270px;height:270px;bottom:-70px;right:20%"></div>
   <div class="content">
-    <div class="sec-title">数据调用与工具库</div>
-    <div class="sec-sub">工具库是数据调用能力的具体实现 —— 收付通、收银宝等系统的接口已封装为可调用的工具，AI 按需自动选取</div>
+    <div class="sec-title">数据能力与工具库</div>
+    <div class="sec-sub">已接入收付通、收银宝等系统的诸多数据能力，并支持指定调用</div>
     <!-- 统计条：接口规模一眼可见 -->
     <div style="display:flex;gap:18px">
       <div style="flex:1;padding:13px 18px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff;display:flex;align-items:center;gap:12px">
@@ -643,28 +643,28 @@ img[data-zoom]{cursor:zoom-in}</style>
     <div style="margin-top:14px;display:flex;gap:20px;flex:1;min-height:0;align-items:stretch">
       <!-- 左栏：对内 + 对外接口能力 -->
       <div style="flex:1;display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;align-items:center;gap:8px">
             <span style="width:26px;height:26px;border-radius:8px;background:var(--brand-xl);display:grid;place-items:center;font-size:15px">&#x1f3e2;</span>
             <div style="font-size:17px;font-weight:700;color:var(--ink)">对内接口能力</div>
             <span style="font-size:16px;color:var(--mut)">收付通 · 收银宝 · 统一客户</span>
           </div>
-          <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:12px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">商户档案</div>
-              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">商户全量资料与状态</div>
+              <div style="font-size:16px;color:var(--ink2);line-height:1.55">商户全量资料与状态</div>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">交易诊断</div>
-              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">失败原因分析与处理建议</div>
+              <div style="font-size:16px;color:var(--ink2);line-height:1.55">失败原因分析与处理建议</div>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">余额与结算</div>
-              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">结算记录与到账情况</div>
+              <div style="font-size:16px;color:var(--ink2);line-height:1.55">结算记录与到账情况</div>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">终端与渠道报备</div>
-              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">门店终端、码牌与报备进度</div>
+              <div style="font-size:16px;color:var(--ink2);line-height:1.55">门店终端、码牌与报备进度</div>
             </div>
           </div>
         </div>
@@ -674,16 +674,21 @@ img[data-zoom]{cursor:zoom-in}</style>
             <div style="font-size:17px;font-weight:700;color:var(--ink)">对外接口能力</div>
             <span style="font-size:16px;color:var(--mut)">商户侧自助查询</span>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:12px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">交易详情 · 秒到</div>
-              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">查交易、看到账</div>
+              <div style="font-size:16px;color:var(--ink2);line-height:1.55">查交易、看到账</div>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">经营报告</div>
-              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">给商户看经营概况</div>
+              <div style="font-size:16px;color:var(--ink2);line-height:1.55">给商户看经营概况</div>
             </div>
           </div>
+        </div>
+        <!-- 底部 TIPS -->
+        <div style="flex:1;padding:14px 16px;border-radius:var(--radius);background:rgba(0,91,172,.055);border:1px solid rgba(0,91,172,.12);border-left:4px solid var(--brand);display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px;flex-shrink:0">&#x1f4a1;</span>
+          <div style="font-size:15px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">工具调用：</strong>以上接口均已封装为工具库中的工具，发仔根据问题意图自动选取，无需人工切换系统。</div>
         </div>
       </div>
       <!-- 右栏：工具库截图（数据调用的具体实现） -->
@@ -691,7 +696,7 @@ img[data-zoom]{cursor:zoom-in}</style>
         <div style="display:flex;align-items:center;gap:8px">
           <span style="width:26px;height:26px;border-radius:8px;background:var(--accent-l);display:grid;place-items:center;font-size:15px">&#x1f9f0;</span>
           <div style="font-size:17px;font-weight:700;color:var(--ink)">工具库</div>
-          <span style="font-size:16px;color:var(--mut)">数据调用能力的具体实现 —— 点击可放大</span>
+          <span style="font-size:16px;color:var(--mut)">数据能力的具体实现</span>
         </div>
         <div style="flex:1;min-height:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);cursor:zoom-in">
           <img data-zoom="../素材/工具库_收银宝.png" src="../素材/工具库_收银宝.png" alt="数据能力工具库" style="width:100%;height:100%;object-fit:contain;display:block">
