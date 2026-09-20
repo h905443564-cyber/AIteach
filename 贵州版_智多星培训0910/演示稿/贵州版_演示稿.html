@@ -775,13 +775,22 @@ img[data-zoom]{cursor:zoom-in}</style>
   <div class="blob blob-blue" style="width:290px;height:290px;bottom:-90px;right:-70px"></div>
   <div class="content">
     <div class="sec-title">场景总览</div>
-    <div class="sec-sub">全部基于现有能力与已收录知识，不是规划中的功能；前三个重点展开，后三个合在一页简介</div>
+    <div class="sec-sub">全部基于现有能力与已收录知识，不是规划中的功能；重点的三场后面单独展开，其余合在一页简介</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;flex:1;min-height:0">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--fz);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--fz);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">通用</div>
+        <div style="display:flex;align-items:center;gap:9px">
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--fz),#F87171);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">01</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink)">知识问答与培训赋能</div>
+        </div>
+        <div class="sc-b" style="flex:1"><div>找制度、找产品参数、做新人培训，答案带引用溯源</div></div>
+      </div>
       <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--brand);padding-right:48px">
         <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--brand);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
         <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">运营</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">01</span>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">02</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">交易查不到账</div>
         </div>
         <div class="sc-b" style="flex:1"><div>商户说钱没到账、交易失败 —— 一次问清结算与交易链路</div></div>
@@ -790,19 +799,10 @@ img[data-zoom]{cursor:zoom-in}</style>
         <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--brand);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
         <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">运营</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">02</span>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">03</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">商户资料变更</div>
         </div>
         <div class="sc-b" style="flex:1"><div>入网建档、资料变更、门店终端、渠道报备一站式查</div></div>
-      </div>
-      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--accent);padding-right:48px">
-        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--accent);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
-        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">研发</div>
-        <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">03</span>
-          <div style="font-size:18px;font-weight:700;color:var(--ink)">接入联调报错</div>
-        </div>
-        <div class="sc-b" style="flex:1"><div>接口报错、报文分析、渠道报备，接入经验沉淀成技能</div></div>
       </div>
       <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--green);padding-right:48px">
         <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--green);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
@@ -822,14 +822,14 @@ img[data-zoom]{cursor:zoom-in}</style>
         </div>
         <div class="sc-b" style="flex:1"><div>门店宣传语、音箱播报文案，说一句特色就能生成</div></div>
       </div>
-      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--mut);padding-right:48px">
-        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--mut);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
-        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">通用</div>
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--accent);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--accent);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">研发</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--mut),#C4CDD8);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">06</span>
-          <div style="font-size:18px;font-weight:700;color:var(--ink)">知识问答与培训赋能</div>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">06</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink)">接入联调报错</div>
         </div>
-        <div class="sc-b" style="flex:1"><div>找制度、找产品参数、做新人培训，答案带引用溯源</div></div>
+        <div class="sc-b" style="flex:1"><div>接口报错、报文分析、渠道报备，接入经验沉淀成技能</div></div>
       </div>
     </div>
     <div class="tip" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
@@ -957,7 +957,17 @@ img[data-zoom]{cursor:zoom-in}</style>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;flex:1;min-height:0">
       <div class="sc-box" style="border-top:3px solid var(--fz)">
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--fz),#F87171);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">04</span>
+          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--fz),#F87171);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">01</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink)">知识问答与培训赋能</div>
+        </div>
+        <div class="sc-b" style="flex:1"><div>找制度、找产品参数、给新人做培训，答案带引用溯源。</div></div>
+        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">K 三级知识库</span><span class="mchip mchip-blue">K4 入库质检</span><span class="mchip mchip-green">G4 话术培训</span></div>
+        <div style="font-size:16px;color:var(--brand);line-height:1.7;padding-top:4px;border-top:1px dashed var(--border)">&#x1f5e8;&#xfe0f; 「这个制度怎么规定的」</div>
+        <div style="font-size:16px;color:var(--ink2);line-height:1.7">&#x1f6e1;&#xfe0f; 知识库还没收录的可能答不准。</div>
+      </div>
+      <div class="sc-box" style="border-top:3px solid var(--green)">
+        <div style="display:flex;align-items:center;gap:9px">
+          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">04</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">经营分析与风险扫描</div>
         </div>
         <div class="sc-b" style="flex:1"><div>帮商户看经营是否健康，也能批量扫一批商户的风险信号。</div></div>
@@ -965,25 +975,15 @@ img[data-zoom]{cursor:zoom-in}</style>
         <div style="font-size:16px;color:var(--brand);line-height:1.7;padding-top:4px;border-top:1px dashed var(--border)">&#x1f5e8;&#xfe0f; 「这家店最近掉量了吗」</div>
         <div style="font-size:16px;color:var(--ink2);line-height:1.7">&#x1f6e1;&#xfe0f; 风险分级还需要人工确认后再用。</div>
       </div>
-      <div class="sc-box" style="border-top:3px solid var(--accent)">
+      <div class="sc-box" style="border-top:3px solid var(--green)">
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">05</span>
+          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">05</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">营销与文案生成</div>
         </div>
         <div class="sc-b" style="flex:1"><div>门店宣传语、音箱播报文案 —— 说一句特色就能生成。</div></div>
         <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-red">G1 营销文案</span><span class="mchip mchip-red">O 商户信息</span></div>
         <div style="font-size:16px;color:var(--brand);line-height:1.7;padding-top:4px;border-top:1px dashed var(--border)">&#x1f5e8;&#xfe0f; 「帮这家店写个宣传语」</div>
         <div style="font-size:16px;color:var(--ink2);line-height:1.7">&#x1f6e1;&#xfe0f; 生成内容要商户确认后再使用。</div>
-      </div>
-      <div class="sc-box" style="border-top:3px solid var(--green)">
-        <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">06</span>
-          <div style="font-size:18px;font-weight:700;color:var(--ink)">知识问答与培训赋能</div>
-        </div>
-        <div class="sc-b" style="flex:1"><div>找制度、找产品参数、给新人做培训，答案带引用溯源。</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">K 三级知识库</span><span class="mchip mchip-blue">K4 入库质检</span><span class="mchip mchip-green">G4 话术培训</span></div>
-        <div style="font-size:16px;color:var(--brand);line-height:1.7;padding-top:4px;border-top:1px dashed var(--border)">&#x1f5e8;&#xfe0f; 「这个制度怎么规定的」</div>
-        <div style="font-size:16px;color:var(--ink2);line-height:1.7">&#x1f6e1;&#xfe0f; 知识库还没收录的可能答不准。</div>
       </div>
     </div>
     <div style="margin-top:12px;padding:12px 16px;border-radius:var(--radius);background:linear-gradient(160deg,#ECFDF5,#fff);border:1px solid rgba(16,185,129,.18);display:flex;align-items:center;gap:10px">
