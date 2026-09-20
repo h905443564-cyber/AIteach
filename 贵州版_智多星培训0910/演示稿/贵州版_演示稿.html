@@ -330,20 +330,29 @@ img[data-zoom]{cursor:zoom-in}</style>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
       <div class="sc-box" style="border-top:3px solid var(--brand)">
         <div class="sc-h">做基建的</div>
-        <div class="sc-b"><div>从基础设施到应用层，全链路自研</div></div>
+        <div class="sc-b" style="display:flex;flex-direction:column;gap:8px">
+          <div>从基础设施到应用层，全链路自研</div>
+          <div>上层应用随接随用，不必各做一套</div>
+        </div>
       </div>
       <div class="sc-box" style="border-top:3px solid var(--green)">
         <div class="sc-h">懂业务的</div>
-        <div class="sc-b"><div>三级知识库打通文档中心</div></div>
+        <div class="sc-b" style="display:flex;flex-direction:column;gap:8px">
+          <div>三级知识库打通文档中心</div>
+          <div>回答有出处，可追溯到具体文档</div>
+        </div>
       </div>
       <div class="sc-box" style="border-top:3px solid var(--accent)">
         <div class="sc-h">能办事的</div>
-        <div class="sc-b"><div>直连业务系统，查询与指引一步到位</div></div>
+        <div class="sc-b" style="display:flex;flex-direction:column;gap:8px">
+          <div>直连业务系统，查询与指引一步到位</div>
+          <div>目前以查询与指引为主，改动作仍走原流程</div>
+        </div>
       </div>
     </div>
     <!-- 定位对齐：不是 → 而是（参照广东版双卡对比，左中性 / 右品牌色） -->
+    <!-- 两处 margin-top:auto 平分剩余空间，避免单处出现过宽间隙 -->
     <div style="margin-top:auto">
-      <div style="font-size:15px;font-weight:700;color:var(--mut);letter-spacing:.6px;margin-bottom:9px">先对齐一下它的定位</div>
       <div style="display:flex;gap:13px;align-items:stretch">
         <div style="flex:1;padding:30px 20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px">
           <div style="font-size:19px;font-weight:700;color:var(--mut);display:flex;align-items:center;gap:7px">&#x274c; 容易误解为</div>
@@ -395,7 +404,6 @@ img[data-zoom]{cursor:zoom-in}</style>
       </div>
     </div>
     <div style="margin-top:13px">
-      <div style="font-size:18px;font-weight:700;color:var(--brand);margin-bottom:9px">&#x1f4cd; 在哪能找到发仔 —— 五个入口，同一个发仔</div>
       <div style="display:flex;gap:12px">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
           <span style="padding:3px 11px;border-radius:99px;background:var(--brand);color:#fff;font-size:15px;font-weight:700">PC 网页端</span>
@@ -454,36 +462,54 @@ img[data-zoom]{cursor:zoom-in}</style>
   <div class="blob blob-blue" style="width:240px;height:240px;top:-50px;right:-40px"></div>
   <div class="blob blob-orange" style="width:180px;height:180px;bottom:-40px;left:-30px"></div>
   <div class="content">
-    <div class="sec-title" style="font-size:36px">四层技术架构</div>
-    <div class="sec-sub" style="margin-bottom:10px">全链路自主研发，从云基础设施到应用层完全自主可控</div>
-    <!-- 左右两栏：左＝说明 + 数据安全（不越过中缝），右＝架构图独占整个右半区 -->
+    <div class="sec-title">四层技术架构</div>
+    <div class="sec-sub" style="margin-bottom:18px">全链路自主研发，从云基础设施到应用层完全自主可控</div>
+    <!-- 左右两栏：左＝架构解读（精简三点），右＝架构图（顶部应用胶囊 / 中间自研层 / 底部基建梯形底座） -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;flex:1;min-height:0">
       <!-- ── 左栏 ── -->
-      <div style="display:flex;flex-direction:column;gap:14px;min-height:0;padding-right:8px">
-        <div style="font-size:17px;color:var(--ink2);line-height:1.85">智多星平台采用<strong style="color:var(--brand);font-size:19px">四层架构</strong>设计，各层职责清晰、<strong style="color:var(--brand)">核心能力全部自研</strong>，确保数据安全与系统可控。</div>
-        <div style="display:flex;flex-direction:column;gap:17px">
-          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:10px;height:10px;border-radius:50%;background:var(--brand);margin-top:7px;flex-shrink:0;box-shadow:0 0 0 4px rgba(0,91,172,.13)"></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700;color:var(--ink);line-height:1.5">用户与业务系统</div><div style="font-size:16px;color:var(--ink2);line-height:1.6">对内 / 对外多渠道统一接入</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:10px;height:10px;border-radius:50%;background:var(--brand);margin-top:7px;flex-shrink:0;box-shadow:0 0 0 4px rgba(0,91,172,.13)"></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700;color:var(--ink);line-height:1.5">Agent 应用层</div><div style="font-size:16px;color:var(--ink2);line-height:1.6">发仔、智能客服等应用，Skill 编排 + Tool 调用</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:7px;flex-shrink:0;box-shadow:0 0 0 4px rgba(255,107,53,.15)"></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700;color:var(--ink);line-height:1.5">平台管理与运营层</div><div style="font-size:16px;color:var(--ink2);line-height:1.6">知识库、权限、质量评估、运维监控</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:10px;height:10px;border-radius:50%;background:var(--green);margin-top:7px;flex-shrink:0;box-shadow:0 0 0 4px rgba(16,185,129,.18)"></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700;color:var(--ink);line-height:1.5">内核 AI 能力层</div><div style="font-size:16px;color:var(--ink2);line-height:1.6">LLM、RAG、MCP、记忆、编排等核心引擎</div></div></div>
-          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:10px;height:10px;border-radius:50%;background:var(--mut);margin-top:7px;flex-shrink:0;box-shadow:0 0 0 4px rgba(148,163,184,.24)"></div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:17px;font-weight:700;color:var(--ink);line-height:1.5">云服务</div><div style="font-size:16px;color:var(--ink2);line-height:1.6">LLM / Embedding / Rerank 等模型服务与基础设施</div></div></div>
+      <div style="display:flex;flex-direction:column;gap:24px;min-height:0;padding-right:8px">
+        <div style="font-size:17px;color:var(--ink2);line-height:1.85">智多星采用 <strong style="color:var(--brand);font-size:19px">四层架构</strong> 设计：上面接业务应用，下面靠基础设施托底，层与层之间<strong style="color:var(--brand)">接口标准、可独立升级</strong>。</div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:11px;height:11px;border-radius:50%;background:var(--brand);margin-top:8px;flex-shrink:0;box-shadow:0 0 0 4px rgba(0,91,172,.13)"></div><div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:18px;font-weight:700;color:var(--ink);line-height:1.5">全栈自研</div><div style="font-size:16px;color:var(--ink2);line-height:1.7">从模型服务到编排引擎，核心能力全部自研</div></div></div>
+          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:11px;height:11px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0;box-shadow:0 0 0 4px rgba(255,107,53,.15)"></div><div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:18px;font-weight:700;color:var(--ink);line-height:1.5">分层解耦</div><div style="font-size:16px;color:var(--ink2);line-height:1.7">每层职责单一，任一层的升级不影响其他层</div></div></div>
+          <div style="display:flex;align-items:flex-start;gap:12px"><div style="width:11px;height:11px;border-radius:50%;background:var(--green);margin-top:8px;flex-shrink:0;box-shadow:0 0 0 4px rgba(16,185,129,.18)"></div><div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:18px;font-weight:700;color:var(--ink);line-height:1.5">安全可控</div><div style="font-size:16px;color:var(--ink2);line-height:1.7">数据与模型运行在通联云内，不出私域</div></div></div>
         </div>
-        <div style="font-size:16px;font-weight:600;color:var(--ink2);line-height:1.7">&#x1f3d7; 所有核心能力均为通联自研，区别于市面开源方案与互联网产品</div>
-        <div style="margin-top:auto;padding:13px 15px;border-radius:10px;background:rgba(0,91,172,.055);border:1px solid rgba(0,91,172,.12);border-left:4px solid var(--brand);font-size:16px;color:var(--ink2);line-height:1.7">
-          <span style="margin-right:5px">&#x1f512;</span><strong style="color:var(--brand);font-size:17px">数据安全：</strong>所有数据均在通联自有云环境内处理，不经过第三方模型服务商。
+        <div style="margin-top:auto;padding:14px 16px;border-radius:10px;background:rgba(0,91,172,.055);border:1px solid rgba(0,91,172,.12);border-left:4px solid var(--brand);font-size:16px;color:var(--ink2);line-height:1.75">
+          <span style="margin-right:5px">&#x1f512;</span><strong style="color:var(--brand);font-size:17px">数据安全：</strong>所有数据在智多星内处理，不经过第三方模型服务商。
         </div>
       </div>
-      <!-- ── 右栏：极简架构图 —— 只呈现层级与流向，要点说明由左栏承载 ── -->
-      <div style="display:flex;flex-direction:column;height:100%;min-height:0;justify-content:space-between">
-        <div style="padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#F0F4F8,#E8EDF2);border:1px solid rgba(0,91,172,.12);text-align:center;font-size:17px;font-weight:700;color:var(--ink2)">&#x1f464; 用户与业务系统</div>
-        <div style="text-align:center;line-height:1"><span style="font-size:18px;color:var(--brand)">&#x2193;</span></div>
-        <div style="padding:18px;border-radius:12px;background:linear-gradient(160deg,#EBF4FF,#fff);border:1px solid rgba(0,91,172,.18);border-left:5px solid var(--brand);box-shadow:0 2px 12px rgba(0,91,172,.08);text-align:center;font-size:21px;font-weight:800;color:var(--brand)">Agent 应用层</div>
-        <div style="text-align:center;line-height:1"><span style="font-size:18px;color:var(--brand)">&#x2193;</span></div>
-        <div style="padding:18px;border-radius:12px;background:linear-gradient(160deg,#FFF7ED,#fff);border:1px solid rgba(255,107,53,.18);border-left:5px solid var(--accent);box-shadow:0 2px 12px rgba(255,107,53,.08);text-align:center;font-size:21px;font-weight:800;color:var(--accent)">平台管理与运营层</div>
-        <div style="text-align:center;line-height:1"><span style="font-size:18px;color:var(--accent)">&#x2193;</span></div>
-        <div style="padding:18px;border-radius:12px;background:linear-gradient(160deg,#ECFDF5,#fff);border:1px solid rgba(16,185,129,.18);border-left:5px solid var(--green);box-shadow:0 2px 12px rgba(16,185,129,.08);text-align:center;font-size:21px;font-weight:800;color:var(--green)">内核 AI 能力层</div>
-        <div style="text-align:center;line-height:1"><span style="font-size:18px;color:var(--green)">&#x2193;</span></div>
-        <div style="padding:12px 18px;border-radius:10px;background:linear-gradient(135deg,#F0F4F8,#E8EDF2);border:1px solid rgba(0,91,172,.12);text-align:center;font-size:17px;font-weight:700;color:var(--ink2)">云服务 · 基础设施支撑</div>
+      <!-- ── 右栏：架构图 —— 顶部应用用胶囊，中间自研层用卡片，底部基建用梯形底座 ── -->
+      <div style="display:flex;flex-direction:column;height:100%;min-height:0;justify-content:center">
+        <!-- 顶部：应用接入层（胶囊 · 虚线，表示平台外部的使用方） -->
+        <div style="align-self:center;padding:11px 30px;border-radius:99px;background:#fff;border:2px dashed rgba(0,91,172,.45);text-align:center">
+          <div style="font-size:17px;font-weight:700;color:var(--ink2);line-height:1.4">&#x1f464; 用户与业务系统</div>
+          <div style="font-size:16px;color:var(--mut);line-height:1.4">对内 / 对外多渠道统一接入</div>
+        </div>
+        <div style="text-align:center;line-height:1;height:20px"><span style="font-size:18px;color:var(--brand)">&#x2193;</span></div>
+        <!-- 中部：平台三层（实线卡片 + 左侧色条） -->
+        <div style="padding:15px 16px;border-radius:12px;background:linear-gradient(160deg,#EBF4FF,#fff);border:1px solid rgba(0,91,172,.18);border-left:5px solid var(--brand);box-shadow:0 2px 12px rgba(0,91,172,.08);text-align:center">
+          <div style="font-size:20px;font-weight:800;color:var(--brand);line-height:1.4">Agent 应用层</div>
+          <div style="font-size:16px;color:var(--ink2);line-height:1.5">发仔、智能客服 · Skill 编排 + Tool 调用</div>
+        </div>
+        <div style="text-align:center;line-height:1;height:20px"><span style="font-size:18px;color:var(--brand)">&#x2193;</span></div>
+        <div style="padding:15px 16px;border-radius:12px;background:linear-gradient(160deg,#FFF7ED,#fff);border:1px solid rgba(255,107,53,.18);border-left:5px solid var(--accent);box-shadow:0 2px 12px rgba(255,107,53,.08);text-align:center">
+          <div style="font-size:20px;font-weight:800;color:var(--accent);line-height:1.4">平台管理与运营层</div>
+          <div style="font-size:16px;color:var(--ink2);line-height:1.5">知识库、权限、质量评估、运维监控</div>
+        </div>
+        <div style="text-align:center;line-height:1;height:20px"><span style="font-size:18px;color:var(--accent)">&#x2193;</span></div>
+        <div style="padding:15px 16px;border-radius:12px;background:linear-gradient(160deg,#ECFDF5,#fff);border:1px solid rgba(16,185,129,.18);border-left:5px solid var(--green);box-shadow:0 2px 12px rgba(16,185,129,.08);text-align:center">
+          <div style="font-size:20px;font-weight:800;color:var(--green);line-height:1.4">内核 AI 能力层</div>
+          <div style="font-size:16px;color:var(--ink2);line-height:1.5">LLM、RAG、MCP、记忆、编排等核心引擎</div>
+        </div>
+        <div style="text-align:center;line-height:1;height:20px"><span style="font-size:18px;color:var(--green)">&#x2193;</span></div>
+        <!-- 底部：基础设施（深色梯形底座，上窄下宽，视觉上"托住"上方各层） -->
+        <div style="position:relative;width:100%">
+          <div style="position:absolute;inset:0;clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);background:linear-gradient(180deg,#3C4A5E,#1F2937);filter:drop-shadow(0 4px 10px rgba(15,23,42,.28))"></div>
+          <div style="position:relative;padding:15px 16px;text-align:center">
+            <div style="font-size:20px;font-weight:800;color:#fff;line-height:1.4">&#x2601; 云服务 · 基础设施</div>
+            <div style="font-size:16px;color:rgba(255,255,255,.82);line-height:1.5">LLM / Embedding / Rerank · 通联云底座</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -530,8 +556,8 @@ img[data-zoom]{cursor:zoom-in}</style>
         <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-green">分步指引</span><span class="mchip mchip-green">自助办理</span></div>
       </div>
     </div>
-    <div class="tip" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
-      <span style="font-size:18px;margin-right:3px">&#x1f3d7;</span> <strong>统一底座：</strong>三大能力生长在同一平台，目前只做查询和指引，结论来自已收录知识，判断与决定仍由大家完成。
+    <div class="tip" style="margin-top:12px;padding:9px 14px;font-size:16px;align-items:center">
+      <span style="font-size:18px;margin-right:3px">&#x1f3d7;</span> <strong>统一底座：</strong>TEST_MARKER_123 —— 目前它做的是查询和指引，答案都来自已收录的知识，判断和决定还是留给大家。
     </div>
   </div>
 </div>
@@ -599,16 +625,16 @@ img[data-zoom]{cursor:zoom-in}</style>
     <div class="sec-title">数据怎么调</div>
     <div class="sec-sub">把收付通、收银宝等系统的数据接到 AI 上，查数不用来回切系统</div>
     <!-- 统计条：接口规模一眼可见 -->
-    <div style="display:flex;gap:12px">
-      <div style="flex:1;padding:11px 16px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff;display:flex;align-items:center;gap:12px">
+    <div style="display:flex;gap:18px">
+      <div style="flex:1;padding:13px 18px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff;display:flex;align-items:center;gap:12px">
         <div style="font-size:38px;font-weight:800;line-height:1">33</div>
         <div style="font-size:16px;line-height:1.45">对内接口<div style="font-size:15px;opacity:.82">收付通 · 收银宝</div></div>
       </div>
-      <div style="flex:1;padding:11px 16px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:flex;align-items:center;gap:12px">
+      <div style="flex:1;padding:13px 18px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:flex;align-items:center;gap:12px">
         <div style="font-size:38px;font-weight:800;line-height:1">10</div>
         <div style="font-size:16px;line-height:1.45">对外接口<div style="font-size:15px;opacity:.85">商户侧自助查询</div></div>
       </div>
-      <div style="flex:1;padding:11px 16px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--green),#059669);color:#fff;display:flex;align-items:center;gap:12px">
+      <div style="flex:1;padding:13px 18px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--green),#059669);color:#fff;display:flex;align-items:center;gap:12px">
         <div style="font-size:38px;font-weight:800;line-height:1">11</div>
         <div style="font-size:16px;line-height:1.45">类查询维度<div style="font-size:15px;opacity:.85">商户 · 交易 · 结算 · 经营</div></div>
       </div>
@@ -616,31 +642,31 @@ img[data-zoom]{cursor:zoom-in}</style>
     <!-- 常用接口能力 + 提问链路 -->
     <div style="margin-top:14px;display:flex;gap:20px;flex:1;min-height:0;align-items:stretch">
       <div style="flex:1.12;display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;align-items:center;gap:8px">
             <span style="width:26px;height:26px;border-radius:8px;background:var(--brand-xl);display:grid;place-items:center;font-size:15px">&#x1f3e2;</span>
             <div style="font-size:17px;font-weight:700;color:var(--ink)">对内接口能力</div>
             <span style="font-size:16px;color:var(--mut)">收付通 · 收银宝 · 统一客户</span>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:12px">
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">商户档案</div>
-              <div style="font-size:16px;color:var(--ink2);line-height:1.55">商户全量资料与状态</div>
+              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">商户全量资料与状态</div>
               <span style="align-self:flex-start;margin-top:auto;padding:2px 9px;border-radius:99px;background:var(--brand-xl);color:var(--brand-d);font-size:15px;font-weight:600">收付通 · 收银宝</span>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">交易诊断</div>
-              <div style="font-size:16px;color:var(--ink2);line-height:1.55">失败原因分析与处理建议</div>
+              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">失败原因分析与处理建议</div>
               <span style="align-self:flex-start;margin-top:auto;padding:2px 9px;border-radius:99px;background:var(--brand-xl);color:var(--brand-d);font-size:15px;font-weight:600">收付通</span>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">余额与结算</div>
-              <div style="font-size:16px;color:var(--ink2);line-height:1.55">结算记录与到账情况</div>
+              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">结算记录与到账情况</div>
               <span style="align-self:flex-start;margin-top:auto;padding:2px 9px;border-radius:99px;background:var(--brand-xl);color:var(--brand-d);font-size:15px;font-weight:600">收付通</span>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">终端与渠道报备</div>
-              <div style="font-size:16px;color:var(--ink2);line-height:1.55">门店终端、码牌与报备进度</div>
+              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">门店终端、码牌与报备进度</div>
               <span style="align-self:flex-start;margin-top:auto;padding:2px 9px;border-radius:99px;background:var(--accent-l);color:#9A3412;font-size:15px;font-weight:600">收银宝</span>
             </div>
           </div>
@@ -651,34 +677,34 @@ img[data-zoom]{cursor:zoom-in}</style>
             <div style="font-size:17px;font-weight:700;color:var(--ink)">对外接口能力</div>
             <span style="font-size:16px;color:var(--mut)">商户侧自助查询</span>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:12px">
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">交易详情 · 秒到</div>
-              <div style="font-size:16px;color:var(--ink2);line-height:1.55">查交易、看到账</div>
+              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">查交易、看到账</div>
               <span style="align-self:flex-start;margin-top:auto;padding:2px 9px;border-radius:99px;background:var(--green-l);color:#047857;font-size:15px;font-weight:600">商户侧</span>
             </div>
             <div style="padding:10px 13px;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px">
               <div style="font-size:16px;font-weight:700;color:var(--ink)">经营报告</div>
-              <div style="font-size:16px;color:var(--ink2);line-height:1.55">给商户看经营概况</div>
+              <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.55">给商户看经营概况</div>
               <span style="align-self:flex-start;margin-top:auto;padding:2px 9px;border-radius:99px;background:var(--green-l);color:#047857;font-size:15px;font-weight:600">商户侧</span>
             </div>
           </div>
         </div>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:12px">
-        <div style="padding:15px 18px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow);flex:1">
-          <div style="font-size:17px;font-weight:700;color:var(--brand);margin-bottom:9px">&#x1f5a5;&#xfe0f; 一次提问，背后发生了什么</div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">1</span><span style="font-size:16px;color:var(--ink2)">发仔接到问题，判断意图</span></div>
-            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">2</span><span style="font-size:16px;color:var(--ink2)">底座检索知识库，取通联业务口径</span></div>
-            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">3</span><span style="font-size:16px;color:var(--ink2)">调用业务接口，取实时数据</span></div>
-            <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">4</span><span style="font-size:16px;color:var(--ink2)">组织答案返回，附数据来源与操作指引</span></div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:18px 20px;border-radius:var(--radius);background:linear-gradient(160deg,var(--brand-xl),#fff);border:1px solid rgba(0,91,172,.15);box-shadow:var(--shadow)">
+          <div style="font-size:17px;font-weight:700;color:var(--brand);margin-bottom:12px">&#x1f5a5;&#xfe0f; 一次提问，背后发生了什么</div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:8px">
+            <div style="flex:1;display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">1</span><span style="font-size:16px;color:var(--ink2)">发仔接到问题，判断意图</span></div>
+            <div style="flex:1;display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">2</span><span style="font-size:16px;color:var(--ink2)">底座检索知识库，取通联业务口径</span></div>
+            <div style="flex:1;display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">3</span><span style="font-size:16px;color:var(--ink2)">调用业务接口，取实时数据</span></div>
+            <div style="flex:1;display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">4</span><span style="font-size:16px;color:var(--ink2)">组织答案返回，附数据来源与操作指引</span></div>
           </div>
         </div>
+        <div class="tip tip-warn" style="padding:11px 16px;font-size:15px">
+          <span style="font-size:16px">&#x26a0;&#xfe0f;</span> <strong>只查不改：</strong>目前只做查询和指引，涉及改动还是走原有流程、由人工处理。
+        </div>
       </div>
-    </div>
-    <div class="tip tip-warn" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
-      <span style="font-size:17px;margin-right:3px">&#x26a0;&#xfe0f;</span> <strong>只查不改：</strong>目前只做查询和指引，涉及改动的仍走原流程、由人工处理。
     </div>
   </div>
 </div>
@@ -718,7 +744,7 @@ img[data-zoom]{cursor:zoom-in}</style>
 <div class="slide" data-index="11">
   <div class="blob blob-orange" style="width:270px;height:270px;top:-60px;left:40%"></div>
   <div class="content">
-    <div class="sec-title">三大智能体</div>
+    <div class="sec-title">初始智能体</div>
     <div class="sec-sub">覆盖对内、对外、商户接入三类场景；下一阶段将装配到具体业务场景</div>
     <div class="three-col" style="align-items:stretch;gap:18px">
       <div style="padding:20px 18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;align-items:center;gap:9px">
@@ -810,7 +836,7 @@ img[data-zoom]{cursor:zoom-in}</style>
       </div>
     </div>
     <div class="tip" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
-      <span style="font-size:18px;margin-right:3px">&#x1f91d;</span> <strong>欢迎补充：</strong>贵州本地高频差错、材料差异、接入案例，可录入部门知识库或沉淀为技能包 —— 供得越多，结论越贴本地。
+      <span style="font-size:18px;margin-right:3px">&#x1f91d;</span> <strong>欢迎补充与拓展：</strong>贵州本地的高频差错、材料差异与接入案例，可录入部门知识库或沉淀为技能包 —— 供得越多，结论越贴合本地。
     </div>
     </div>
   </div>
@@ -823,40 +849,30 @@ img[data-zoom]{cursor:zoom-in}</style>
   <div class="content">
     <div class="sec-title">交易查不到账</div>
     <div class="sec-sub">收单与网络支付最高频的一类求助 —— 过去要逐个系统翻</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1;min-height:0">
-      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box">
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:18px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:0">
+        <div class="sc-box" style="flex:1">
           <div class="sc-h">&#x1f4cc; 场景是什么</div>
           <div class="sc-b"><div>商户最常说的两句话：<strong>「钱没到账」「这笔交易失败了」</strong>。过去要分别登录收付通、收银宝、查秒到记录、再翻业务规则，来回对口径。</div></div>
         </div>
-        <div class="sc-box" style="">
+        <div class="sc-box" style="flex:1">
           <div class="sc-h">&#x1f9ea; 我们做了什么尝试（仅用现有能力）</div>
           <div class="sc-b"><div><strong>数据：</strong>S 收付通（交易查询 / 统计 / 诊断）、Y 收银宝（交易统计）、O 商户侧（交易详情 / 结算 / 秒到）<br><strong>知识：</strong>K 三级知识库（差错处理口径、业务规则，带引用溯源）<br><strong>生成：</strong>G2 诊断报告</div></div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box" style="">
-          <div class="sc-h">&#x1f5e8;&#xfe0f; 典型问法与编排链</div>
-          <div class="sc-b"><div>「商户号 XXXXX 说昨天那笔钱没到账」<br>&rarr; 结算记录 &rarr; 交易详情 &rarr; 秒到记录 &rarr; 结算配置 &rarr; 知识库规则<br>一次问清，直接给结论与依据。</div></div>
+        <div class="sc-box" style="flex:1">
+          <div class="sc-h" style="width:100%;justify-content:space-between">
+            <span>&#x1f5a5;&#xfe0f; 现场演示</span>
+            <a href="https://ai.allinpay.com/web/share/v6bnoYVuyoP6awomRnh" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:99px;background:var(--brand-xl);font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
+            <div style="flex:1;position:relative;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
+              <img src="../素材/演示_场景一_交易查询.png" alt="交易查询演示截图" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            </div>
+            <div style="font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">经典问题：</strong>「商户号 XXXXX 说昨天那笔钱没到账」</div>
+          </div>
         </div>
-        <div class="sc-box warn">
-          <div class="sc-h">&#x1f6e1;&#xfe0f; 权限边界（明确不做）</div>
-          <div class="sc-b"><div>目前只做查询和指引：退款、调账、改结算配置这些涉及资金的动作，还是走原有工单、由人工复核。</div></div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-    <div class="sc-box" style="flex:1">
-      <div class="sc-h">&#x1f5a5;&#xfe0f; 现场演示</div>
-      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
-        <div style="flex:1;display:flex;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
-          <img src="../素材/演示_场景一_交易查询.png" alt="交易查询演示截图" style="width:100%;height:100%;min-height:0;object-fit:contain;display:block">
-        </div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「商户号 XXXXX 说昨天那笔钱没到账」</div>
-          <a href="https://ai.allinpay.com/web/share/v6bnoYVuyoP6awomRnh" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
-        </div>
-      </div>
-    </div>
       </div>
     </div>
   </div>
@@ -869,40 +885,30 @@ img[data-zoom]{cursor:zoom-in}</style>
   <div class="content">
     <div class="sec-title">商户资料变更</div>
     <div class="sec-sub">入网、资料变更、门店终端、渠道报备 —— 资料散在多个系统</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1;min-height:0">
-      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box">
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:18px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:0">
+        <div class="sc-box" style="flex:1">
           <div class="sc-h">&#x1f4cc; 场景是什么</div>
           <div class="sc-b"><div>商户入网建档、换结算卡、更新证件、查门店与终端、跟进渠道报备进度，这些资料分散在不同系统里。</div></div>
         </div>
-        <div class="sc-box" style="">
+        <div class="sc-box" style="flex:1">
           <div class="sc-h">&#x1f9ea; 我们做了什么尝试（仅用现有能力）</div>
           <div class="sc-b"><div><strong>数据：</strong>S 收付通（商户档案）、Y 收银宝（商户 / 门店 / 终端、渠道报备、合规合同、套餐补贴、卡 bin）<br><strong>知识：</strong>K 三级知识库（入网材料清单、变更流程）<br><strong>对商户：</strong>O 结算信息与套餐余量</div></div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box" style="">
-          <div class="sc-h">&#x1f5e8;&#xfe0f; 典型问法与编排链</div>
-          <div class="sc-b"><div>「这家商户要换结算卡，要走什么流程」<br>&rarr; 商户档案 &rarr; 合规合同状态 &rarr; 套餐余量 &rarr; 自助变更分步指引</div></div>
+        <div class="sc-box" style="flex:1">
+          <div class="sc-h" style="width:100%;justify-content:space-between">
+            <span>&#x1f5a5;&#xfe0f; 现场演示</span>
+            <a href="https://ai.allinpay.com/web/share/paUcK6KEHsTAKPSuBHe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:99px;background:var(--brand-xl);font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
+            <div style="flex:1;position:relative;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
+              <img src="../素材/演示_场景二_商户自助.png" alt="商户自助变更演示截图" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            </div>
+            <div style="font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">经典问题：</strong>「这家商户要换结算卡，要走什么流程」</div>
+          </div>
         </div>
-        <div class="sc-box warn">
-          <div class="sc-h">&#x1f6e1;&#xfe0f; 权限边界（明确不做）</div>
-          <div class="sc-b"><div>资料变更目前还是不给代为提交：只给分步指引，由商户在好老板 APP 自助完成，或由运营按现有流程处理。</div></div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-    <div class="sc-box" style="flex:1">
-      <div class="sc-h">&#x1f5a5;&#xfe0f; 现场演示</div>
-      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
-        <div style="flex:1;display:flex;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
-          <img src="../素材/演示_场景二_商户自助.png" alt="商户自助变更演示截图" style="width:100%;height:100%;min-height:0;object-fit:contain;display:block">
-        </div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「这家商户要换结算卡，要走什么流程」</div>
-          <a href="https://ai.allinpay.com/web/share/paUcK6KEHsTAKPSuBHe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
-        </div>
-      </div>
-    </div>
       </div>
     </div>
   </div>
@@ -910,55 +916,35 @@ img[data-zoom]{cursor:zoom-in}</style>
 
 
 <!-- ════════ P16 接入联调与技术支持 ════════ -->
-<style>
-  /* P17 局部：本页文案较短，加大内边距 / 行距 / 卡片间距吸收剩余空间（不拉伸卡片） */
-  .slide[data-index="15"] .sc-box{padding:34px 22px}
-  .slide[data-index="15"] .sc-b{line-height:1.85}
-  .slide[data-index="15"] .content > div > div{gap:18px}
-</style>
-<style>
-  /* P16 局部：文案较长，收紧卡片内边距避免 5px 溢出 */
-  .slide[data-index="15"] .sc-box{padding:17px 20px}
-</style>
 <div class="slide" data-index="15">
   <div class="blob blob-blue" style="width:290px;height:290px;bottom:-90px;right:-70px"></div>
   <div class="content">
     <div class="sec-title">接入联调报错</div>
     <div class="sec-sub">接口对接、联调报错、报文分析 —— 对应网络支付类业务</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1;min-height:0">
-      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box">
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:18px;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:14px;min-height:0">
+        <div class="sc-box" style="flex:1">
           <div class="sc-h">&#x1f4cc; 场景是什么</div>
           <div class="sc-b"><div>商户或渠道接入时，最容易卡在接口报错与联调排障上：报错码看不懂、报文拿不到、文档找不到对应章节。</div></div>
         </div>
-        <div class="sc-box" style="">
+        <div class="sc-box" style="flex:1">
           <div class="sc-h">&#x1f9ea; 我们做了什么尝试（仅用现有能力）</div>
           <div class="sc-b"><div><strong>数据：</strong>S 收付通（联调日志、原始报文）、Y 收银宝（卡 bin、渠道报备）<br><strong>技能：</strong>研发智擎 AI 技能包（接口对接指引、示例代码、报错定位）<br><strong>知识：</strong>K 文档中心与接口文档</div></div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box" style="">
-          <div class="sc-h">&#x1f5e8;&#xfe0f; 典型问法与编排链</div>
-          <div class="sc-b"><div>「接口返回「验证签名失败」怎么排查」<br>&rarr; 联调日志 &rarr; 原始报文 &rarr; 接口文档 / 技能包 &rarr; 报错原因与修复建议</div></div>
+        <div class="sc-box" style="flex:1">
+          <div class="sc-h" style="width:100%;justify-content:space-between">
+            <span>&#x1f5a5;&#xfe0f; 现场演示</span>
+            <a href="https://ai.allinpay.com/web/share/5ibb9qlO4mfyUh8U9NB" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:99px;background:var(--brand-xl);font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
+            <div style="flex:1;position:relative;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
+              <img src="../素材/演示_场景三_接入排查.png" alt="接入联调排查演示截图" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            </div>
+            <div style="font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">经典问题：</strong>「接口返回「验证签名失败」怎么排查」</div>
+          </div>
         </div>
-        <div class="sc-box warn">
-          <div class="sc-h">&#x1f6e1;&#xfe0f; 权限边界（明确不做）</div>
-          <div class="sc-b"><div>不代改商户侧代码；结论是建议，最终由技术同学确认后再动生产环境。</div></div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-    <div class="sc-box" style="flex:1">
-      <div class="sc-h">&#x1f5a5;&#xfe0f; 现场演示</div>
-      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
-        <div style="flex:1;display:flex;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
-          <img src="../素材/演示_场景三_接入排查.png" alt="接入联调排查演示截图" style="width:100%;height:100%;min-height:0;object-fit:contain;display:block">
-        </div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「接口返回「验证签名失败」怎么排查」</div>
-          <a href="https://ai.allinpay.com/web/share/5ibb9qlO4mfyUh8U9NB" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
-        </div>
-      </div>
-    </div>
       </div>
     </div>
   </div>
