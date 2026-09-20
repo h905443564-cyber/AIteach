@@ -222,7 +222,14 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
 .formula{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius);
   background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);font-size:16px;font-weight:600;color:var(--ink)}
 .formula .fbox{padding:7px 14px;border-radius:8px;font-size:16px;font-weight:700}
-.formula .op{color:var(--mut);font-size:18px}</style>
+.formula .op{color:var(--mut);font-size:18px}
+/* 灯箱：点击截图放大查看 */
+.lb{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.82);cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:92vw;max-height:84vh;border-radius:10px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb-cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:#fff;font-size:19px;font-weight:600;letter-spacing:.5px}
+.lb-close{position:absolute;top:20px;right:28px;color:#fff;font-size:34px;font-weight:700;line-height:1;cursor:pointer}
+img[data-zoom]{cursor:zoom-in}</style>
 </head>
 <body>
 
@@ -392,27 +399,27 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
       <div style="display:flex;gap:12px">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
           <span style="padding:3px 11px;border-radius:99px;background:var(--brand);color:#fff;font-size:15px;font-weight:700">PC 网页端</span>
-          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img src="../素材/入口_PC网页端.png" alt="PC 网页端" style="width:100%;height:92px;object-fit:contain;display:block"></div>
+          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img data-zoom="../素材/入口_PC网页端.png" src="../素材/入口_PC网页端.png" alt="PC 网页端" style="width:100%;height:92px;object-fit:contain;display:block"></div>
           <div style="font-size:15px;color:var(--ink2);text-align:center;line-height:1.5">浏览器打开 <strong style="color:var(--brand)">ai.allinpay.com</strong><br>企业微信扫码登录</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
           <span style="padding:3px 11px;border-radius:99px;background:var(--fz);color:#fff;font-size:15px;font-weight:700">好老板 APP</span>
-          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img src="../素材/入口_好老板APP.png" alt="好老板 APP" style="width:100%;height:92px;object-fit:contain;display:block"></div>
+          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img data-zoom="../素材/入口_好老板APP.png" src="../素材/入口_好老板APP.png" alt="好老板 APP" style="width:100%;height:92px;object-fit:contain;display:block"></div>
           <div style="font-size:15px;color:var(--ink2);text-align:center;line-height:1.5">打开 APP → 点击<strong style="color:var(--fz)">发仔</strong>图标<br>智能问答 + 交易查询</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
           <span style="padding:3px 11px;border-radius:99px;background:var(--green);color:#fff;font-size:15px;font-weight:700">企业微信</span>
-          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img src="../素材/入口_企业微信.png" alt="企业微信" style="width:100%;height:92px;object-fit:contain;display:block"></div>
+          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img data-zoom="../素材/入口_企业微信.png" src="../素材/入口_企业微信.png" alt="企业微信" style="width:100%;height:92px;object-fit:contain;display:block"></div>
           <div style="font-size:15px;color:var(--ink2);text-align:center;line-height:1.5">工作台内直接进入<br>无需额外安装</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
           <span style="padding:3px 11px;border-radius:99px;background:var(--accent);color:#fff;font-size:15px;font-weight:700">QQ 群机器人</span>
-          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img src="../素材/入口_QQ群机器人.png" alt="QQ 群机器人" style="width:100%;height:92px;object-fit:contain;display:block"></div>
+          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img data-zoom="../素材/入口_QQ群机器人.png" src="../素材/入口_QQ群机器人.png" alt="QQ 群机器人" style="width:100%;height:92px;object-fit:contain;display:block"></div>
           <div style="font-size:15px;color:var(--ink2);text-align:center;line-height:1.5">群内 <strong style="color:var(--accent)">@发仔</strong> 提问<br>群里直接答，也能查数据</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
           <span style="padding:3px 11px;border-radius:99px;background:var(--brand-d);color:#fff;font-size:15px;font-weight:700">微信小程序</span>
-          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img src="../素材/入口_微信小程序.png" alt="微信小程序" style="width:100%;height:92px;object-fit:contain;display:block"></div>
+          <div style="width:100%;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#fff"><img data-zoom="../素材/入口_微信小程序.png" src="../素材/入口_微信小程序.png" alt="微信小程序" style="width:100%;height:92px;object-fit:contain;display:block"></div>
           <div style="font-size:15px;color:var(--ink2);text-align:center;line-height:1.5">扫码即用<br>轻量触达商户</div>
         </div>
       </div>
@@ -523,8 +530,8 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-green">分步指引</span><span class="mchip mchip-green">自助办理</span></div>
       </div>
     </div>
-    <div class="tip" style="margin-top:12px;padding:9px 14px;font-size:16px;align-items:center">
-      <span style="font-size:18px;margin-right:3px">&#x1f3d7;</span> <strong>统一底座：</strong>知识、数据、操作三大能力生长在同一个平台上 —— 目前它做的是查询和指引，答案都来自已收录的知识，判断和决定还是留给大家。
+    <div class="tip" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
+      <span style="font-size:18px;margin-right:3px">&#x1f3d7;</span> <strong>统一底座：</strong>三大能力生长在同一平台，目前只做查询和指引，结论来自已收录知识，判断与决定仍由大家完成。
     </div>
   </div>
 </div>
@@ -668,10 +675,10 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
             <div style="display:flex;align-items:center;gap:9px"><span style="width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:700;flex-shrink:0">4</span><span style="font-size:16px;color:var(--ink2)">组织答案返回，附数据来源与操作指引</span></div>
           </div>
         </div>
-        <div class="tip tip-warn" style="padding:9px 14px;font-size:15px">
-          <span style="font-size:16px">&#x26a0;&#xfe0f;</span> <strong>只查不改：</strong>目前只做查询和指引，涉及改动还是走原有流程、由人工处理。
-        </div>
       </div>
+    </div>
+    <div class="tip tip-warn" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
+      <span style="font-size:17px;margin-right:3px">&#x26a0;&#xfe0f;</span> <strong>只查不改：</strong>目前只做查询和指引，涉及改动的仍走原流程、由人工处理。
     </div>
   </div>
 </div>
@@ -744,58 +751,67 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
 <div class="slide" data-index="12">
   <div class="blob blob-blue" style="width:290px;height:290px;bottom:-90px;right:-70px"></div>
   <div class="content">
-    <div class="sec-title">六个业务场景</div>
+    <div class="sec-title">场景总览</div>
     <div class="sec-sub">全部基于现有能力与已收录知识，不是规划中的功能；前三个重点展开，后三个合在一页简介</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;flex:1;min-height:0">
-      <div class="sc-box" style="border-top:3px solid var(--brand)">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--brand);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--brand);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">运营</div>
         <div style="display:flex;align-items:center;gap:9px">
           <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">01</span>
-          <div style="font-size:18px;font-weight:700;color:var(--ink)">交易查询与差错处理</div>
+          <div style="font-size:18px;font-weight:700;color:var(--ink)">交易查不到账</div>
         </div>
         <div class="sc-b" style="flex:1"><div>商户说钱没到账、交易失败 —— 一次问清结算与交易链路</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">S 收付通</span><span class="mchip mchip-blue">O 商户侧</span><span class="mchip mchip-blue">G2 诊断</span></div>
       </div>
-      <div class="sc-box" style="border-top:3px solid var(--brand-l)">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--brand);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--brand);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">运营</div>
         <div style="display:flex;align-items:center;gap:9px">
           <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-l));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">02</span>
-          <div style="font-size:18px;font-weight:700;color:var(--ink)">商户与终端管理</div>
+          <div style="font-size:18px;font-weight:700;color:var(--ink)">商户资料变更</div>
         </div>
         <div class="sc-b" style="flex:1"><div>入网建档、资料变更、门店终端、渠道报备一站式查</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">S 商户档案</span><span class="mchip mchip-green">Y 收银宝</span><span class="mchip mchip-red">O 结算</span></div>
       </div>
-      <div class="sc-box" style="border-top:3px solid var(--green)">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--accent);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--accent);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">研发</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">03</span>
-          <div style="font-size:18px;font-weight:700;color:var(--ink)">接入联调与技术支持</div>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">03</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink)">接入联调报错</div>
         </div>
         <div class="sc-b" style="flex:1"><div>接口报错、报文分析、渠道报备，接入经验沉淀成技能</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">S 联调日志</span><span class="mchip mchip-orange">研发智擎</span><span class="mchip mchip-blue">K 文档</span></div>
       </div>
-      <div class="sc-box" style="border-top:3px solid var(--fz)">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--green);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--green);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">市场</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--fz),#F87171);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">04</span>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">04</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">经营分析与风险扫描</div>
         </div>
         <div class="sc-b" style="flex:1"><div>看单店经营是否健康，也能批量扫一批商户的风险信号</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-orange">G2 经营报告</span><span class="mchip mchip-orange">G3 风险扫描</span><span class="mchip mchip-blue">S 风控限额</span></div>
       </div>
-      <div class="sc-box" style="border-top:3px solid var(--accent)">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--green);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--green);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">市场</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#FF9F6B);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">05</span>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">05</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">营销与文案生成</div>
         </div>
         <div class="sc-b" style="flex:1"><div>门店宣传语、音箱播报文案，说一句特色就能生成</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-red">G1 营销文案</span><span class="mchip mchip-red">O 商户信息</span></div>
       </div>
-      <div class="sc-box" style="border-top:3px solid var(--green)">
+      <div class="sc-box" style="position:relative;overflow:hidden;border-top:3px solid var(--mut);padding-right:48px">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:var(--mut);clip-path:polygon(100% 0,100% 100%,0 0)"></div>
+        <div style="position:absolute;top:12px;right:4px;transform:rotate(45deg);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px">通用</div>
         <div style="display:flex;align-items:center;gap:9px">
-          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--green),#34D399);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">06</span>
+          <span style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--mut),#C4CDD8);color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0">06</span>
           <div style="font-size:18px;font-weight:700;color:var(--ink)">知识问答与培训赋能</div>
         </div>
         <div class="sc-b" style="flex:1"><div>找制度、找产品参数、做新人培训，答案带引用溯源</div></div>
-        <div class="chips-row" style="justify-content:flex-start"><span class="mchip mchip-blue">K 三级知识库</span><span class="mchip mchip-blue">K4 入库质检</span><span class="mchip mchip-green">G4 话术培训</span></div>
-<tr><td class="lbl">P 平台（多端入口 / MCP / 权限审计）</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td><td class="on">&#x25cf;</td></tr>
       </div>
+    </div>
+    <div class="tip" style="margin-top:12px;padding:10px 16px;font-size:16px;align-items:center">
+      <span style="font-size:18px;margin-right:3px">&#x1f91d;</span> <strong>欢迎补充：</strong>贵州本地高频差错、材料差异、接入案例，可录入部门知识库或沉淀为技能包 —— 供得越多，结论越贴本地。
+    </div>
     </div>
   </div>
 </div>
@@ -829,19 +845,15 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box add">
-          <div class="sc-h">&#x1f91d; 欢迎补充与拓展</div>
-          <div class="sc-b"><div>贵州高频的差错类型与本地处理口径，可录入部门知识库 —— 供得越多，结论越贴合本地。</div></div>
-        </div>
-    <div class="sc-box" style="margin-top:12px">
+    <div class="sc-box" style="flex:1">
       <div class="sc-h">&#x1f5a5;&#xfe0f; 现场演示</div>
-      <div style="display:flex;gap:14px;align-items:stretch">
-        <div style="flex:1.2;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
-          <img src="../素材/演示_场景一_交易查询.png" alt="交易查询演示截图" style="width:100%;height:126px;object-fit:contain;display:block">
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div style="flex:1;display:flex;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
+          <img src="../素材/演示_场景一_交易查询.png" alt="交易查询演示截图" style="width:100%;height:100%;min-height:0;object-fit:contain;display:block">
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:9px;justify-content:center">
-          <div style="font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「商户号 XXXXX 说昨天那笔钱没到账」</div>
-          <a href="https://ai.allinpay.com/web/share/v6bnoYVuyoP6awomRnh" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none">&#x1f4ac; 查看对话详情 &rarr;</a>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「商户号 XXXXX 说昨天那笔钱没到账」</div>
+          <a href="https://ai.allinpay.com/web/share/v6bnoYVuyoP6awomRnh" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
         </div>
       </div>
     </div>
@@ -879,19 +891,15 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box add">
-          <div class="sc-h">&#x1f91d; 欢迎补充与拓展</div>
-          <div class="sc-b"><div>贵州各城市的入网材料差异、本地终端与码牌管理经验 —— 沉淀进部门知识库即可复用。</div></div>
-        </div>
-    <div class="sc-box" style="margin-top:12px">
+    <div class="sc-box" style="flex:1">
       <div class="sc-h">&#x1f5a5;&#xfe0f; 现场演示</div>
-      <div style="display:flex;gap:14px;align-items:stretch">
-        <div style="flex:1.2;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
-          <img src="../素材/演示_场景二_商户自助.png" alt="商户自助变更演示截图" style="width:100%;height:126px;object-fit:contain;display:block">
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div style="flex:1;display:flex;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
+          <img src="../素材/演示_场景二_商户自助.png" alt="商户自助变更演示截图" style="width:100%;height:100%;min-height:0;object-fit:contain;display:block">
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:9px;justify-content:center">
-          <div style="font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「这家商户要换结算卡，要走什么流程」</div>
-          <a href="https://ai.allinpay.com/web/share/paUcK6KEHsTAKPSuBHe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none">&#x1f4ac; 查看对话详情 &rarr;</a>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「这家商户要换结算卡，要走什么流程」</div>
+          <a href="https://ai.allinpay.com/web/share/paUcK6KEHsTAKPSuBHe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
         </div>
       </div>
     </div>
@@ -907,6 +915,10 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
   .slide[data-index="15"] .sc-box{padding:34px 22px}
   .slide[data-index="15"] .sc-b{line-height:1.85}
   .slide[data-index="15"] .content > div > div{gap:18px}
+</style>
+<style>
+  /* P16 局部：文案较长，收紧卡片内边距避免 5px 溢出 */
+  .slide[data-index="15"] .sc-box{padding:17px 20px}
 </style>
 <div class="slide" data-index="15">
   <div class="blob blob-blue" style="width:290px;height:290px;bottom:-90px;right:-70px"></div>
@@ -935,19 +947,15 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
-        <div class="sc-box add">
-          <div class="sc-h">&#x1f91d; 欢迎补充与拓展</div>
-          <div class="sc-b"><div>贵州本地的接入案例、常见报错与解法，可沉淀为技能包，团队共用、新人也能直接上手。</div></div>
-        </div>
-    <div class="sc-box" style="margin-top:12px">
+    <div class="sc-box" style="flex:1">
       <div class="sc-h">&#x1f5a5;&#xfe0f; 现场演示</div>
-      <div style="display:flex;gap:14px;align-items:stretch">
-        <div style="flex:1.2;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
-          <img src="../素材/演示_场景三_接入排查.png" alt="接入联调排查演示截图" style="width:100%;height:126px;object-fit:contain;display:block">
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0">
+        <div style="flex:1;display:flex;min-height:0;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:var(--bg)">
+          <img src="../素材/演示_场景三_接入排查.png" alt="接入联调排查演示截图" style="width:100%;height:100%;min-height:0;object-fit:contain;display:block">
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:9px;justify-content:center">
-          <div style="font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「接口返回「验证签名失败」怎么排查」</div>
-          <a href="https://ai.allinpay.com/web/share/5ibb9qlO4mfyUh8U9NB" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none">&#x1f4ac; 查看对话详情 &rarr;</a>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="flex:1;font-size:16px;color:var(--ink2);line-height:1.7"><strong style="color:var(--brand)">推荐提问：</strong>「接口返回「验证签名失败」怎么排查」</div>
+          <a href="https://ai.allinpay.com/web/share/5ibb9qlO4mfyUh8U9NB" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:16px;font-weight:600;color:var(--brand);text-decoration:none;white-space:nowrap">&#x1f4ac; 查看对话详情 &rarr;</a>
         </div>
       </div>
     </div>
@@ -1160,6 +1168,12 @@ body{font-family:var(--font);color:var(--ink);background:var(--bg);overflow:hidd
   <button id="next" onclick="go(1)">&#x2192;</button>
 </div>
 
+<div class="lb" id="lb">
+  <div class="lb-close" id="lbClose">&#x2715;</div>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
 <script>
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
@@ -1195,6 +1209,26 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Home') { cur = 0; render(); }
   if (e.key === 'End') { cur = total - 1; render(); }
 });
+
+/* 截图点击放大：对带 data-zoom 的图片生效 */
+(function () {
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lbImg'),
+      lbCap = document.getElementById('lbCap'),
+      lbClose = document.getElementById('lbClose');
+  function closeLb() { lb.classList.remove('on'); lbImg.src = ''; }
+  document.querySelectorAll('img[data-zoom]').forEach(function (im) {
+    im.addEventListener('click', function (e) {
+      e.stopPropagation();
+      lbImg.src = im.getAttribute('data-zoom') || im.src;
+      lbCap.textContent = im.getAttribute('alt') || '';
+      lb.classList.add('on');
+    });
+  });
+  lb.addEventListener('click', closeLb);
+  lbClose.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+})();
 
 render();
 </script>
